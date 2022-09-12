@@ -3,6 +3,7 @@ package com.sda.group2;
 import javax.persistence.*;
 
 @Entity(name = "accounts")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
