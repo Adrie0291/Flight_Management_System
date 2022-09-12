@@ -1,6 +1,6 @@
 package frontend;
 
 public interface UserOption {
-    void execute();
-    String name();
+    void execute(Account account);
+    String getName();
 }

@@ -1,9 +1,17 @@
 package frontend;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class CreateUserOptions {
-    List<UserOption> optionList(){
-        return null;
-    };
+    protected static List<UserOption> optionList(Account account) {
+        List<UserOption> optionList = new LinkedList<>();
+        optionList.add(null);
+
+        if (Enum.valueOf(account.getRole()) <= 1) {
+            optionList.add(null);
+        }
+
+        return optionList;
+    }
 }
