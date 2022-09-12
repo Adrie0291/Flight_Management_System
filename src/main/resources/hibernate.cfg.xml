@@ -19,8 +19,15 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
 
 
-        <mapping class="Passenger"/>
-        <mapping class="Luggage"/>
+        <mapping class="Account"/>
+        <mapping class="Administrator"/>
+        <mapping class="Assistant"/>
+        <mapping class="User"/>
+        <mapping class="Ticket"/>
+        <mapping class="Plane"/>
+        <mapping class="Flight"/>
+        <mapping class="Airport"/>
+        <!-- <mapping class="Luggage"/> -->
         <!-- <mapping class="dzien50.hibernate.Phone"/>
         <mapping class="dzien50.hibernate.Task"/>
         <mapping class="dzien48.hibernate.Project"/>-->
