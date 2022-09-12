@@ -1,5 +1,7 @@
 package com.sda.group2.frontend;
 
+import com.sda.group2.Account;
+
 import java.util.LinkedList;
 import java.util.List;
 
