@@ -1,4 +1,4 @@
-package frontend;
+package com.sda.group2.frontend;
 
 public class OptionHandler {
     protected void optionHandler(String userOption, Account account){

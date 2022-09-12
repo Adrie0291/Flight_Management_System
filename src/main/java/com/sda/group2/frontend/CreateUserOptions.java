@@ -1,4 +1,4 @@
-package frontend;
+package com.sda.group2.frontend;
 
 import java.util.LinkedList;
 import java.util.List;
