@@ -16,4 +16,6 @@ public abstract class Account {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
+    @Column
+    Role role;
 }
