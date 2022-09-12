@@ -1,4 +1,7 @@
 package com.sda.group2.hibernate.hql;
 
-public class Assistant {
+import javax.persistence.Entity;
+
+@Entity
+public class Assistant extends Account {
 }

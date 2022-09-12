@@ -1,6 +1,6 @@
 package com.sda.group2.frontend;
 
-import com.sda.group2.Account;
+import com.sda.group2.hibernate.hql.Account;
 
 import java.util.LinkedList;
 import java.util.List;
