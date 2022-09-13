@@ -2,8 +2,10 @@ package com.sda.group2.hibernate.hql;
 
 import javax.persistence.*;
 
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="role",
+        discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,6 +19,8 @@ public abstract class Account {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column
-    Role role;
+
+    public String getPassword() {
+        return password;
+    }
 }
