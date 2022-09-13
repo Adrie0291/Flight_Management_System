@@ -15,7 +15,7 @@ public class Ticket {
     private int seat;
     @Column
     private Luggage luggage;
-    @Column (name="cardId")
+    @Column (name="cardID")
     private String cardId;
 
 }
