@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CreateUserOptions {
     public static List<UserOption> optionList(Account account) {
-        List<UserOption> optionList = new LinkedList<>();
+        List<UserOption> optionList = new LinkedList<UserOption>();
 
         if (account instanceof Administrator) {
             optionList.add(null);
