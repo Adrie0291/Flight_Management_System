@@ -18,11 +18,10 @@ public class Login {
         do {
             System.out.println();
             System.out.println("Login: ");
-            List<Account> account = entityManager.createQuery("from Account a where a.email = :email").setParameter("email", sc.nextLine()).getResultList(); //prawdopodobnie jakaś metoda z HQL później do podmiany?
+            List<Account> account = entityManager.createQuery("from Account a where a.email = :email", Account.class).setParameter("email", sc.nextLine()).getResultList(); //prawdopodobnie jakaś metoda z HQL później do podmiany?
 
             if(account.isEmpty()) {
                 System.out.println("Incorrect login!\nTry again!\n");
-                //Launch.start(); //todo wyrzucenie przed wybór login/rejestracja
                 break;
             }
 
