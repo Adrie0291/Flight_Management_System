@@ -7,15 +7,15 @@ import javax.persistence.*;
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
-    private int ticket_id;
+    @Column (name = "ticket_id")
+    private int ticketId;
     @Column
     private double price;
     @Column
     private int seat;
     @Column
     private Luggage luggage;
-    @Column
-    private int card_id;
+    @Column (name="cardId")
+    private String cardId;
 
 }
