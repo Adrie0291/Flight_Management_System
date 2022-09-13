@@ -1,4 +1,8 @@
 package com.sda.group2.hibernate.hql;
 
-public class User {
+import javax.persistence.Entity;
+
+@Entity
+public class User extends Account  {
+
 }

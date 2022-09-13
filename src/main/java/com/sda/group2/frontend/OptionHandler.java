@@ -1,6 +1,6 @@
 package com.sda.group2.frontend;
 
-import com.sda.group2.Account;
+import com.sda.group2.hibernate.hql.Account;
 
 public class OptionHandler {
     public void optionHandler(String userOption, Account account){
