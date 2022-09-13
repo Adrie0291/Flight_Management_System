@@ -1,16 +1,21 @@
-package com.sda.group2.frontend;
+package com.sda.group2;
 
 import com.sda.group2.hibernate.HibernateUtil;
 
 import com.sda.group2.hibernate.hql.Account;
+import com.sda.group2.hibernate.hql.User;
 import org.hibernate.SessionFactory;
 import javax.persistence.EntityManager;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class Login {
-    public void login() {
+public class LoginRegisterController {
+
+    private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private final EntityManager entityManager = sessionFactory.createEntityManager();
+
+    public void loginDeprecated() {
         final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         final EntityManager entityManager = sessionFactory.createEntityManager();
         Scanner sc = new Scanner(System.in);
@@ -22,7 +27,7 @@ public class Login {
 
             if(account.isEmpty()) {
                 System.out.println("Incorrect login!\nTry again!\n");
-                break;
+                return;
             }
 
             System.out.println("Password: ");
@@ -36,5 +41,20 @@ public class Login {
         }while(true);
 
         HibernateUtil.shutdown();
+    }
+
+    public Account login(String email, String password) {
+        List<Account> accounts = entityManager.createQuery("from Account a where a.email = :email AND a.password = :password", Account.class)
+                .setParameter("email", email)
+                .setParameter("password", password)
+                .getResultList();
+        if (accounts.isEmpty())
+            return new User();
+
+        return accounts.get(0);
+    }
+
+    public void register() {
+
     }
 }
