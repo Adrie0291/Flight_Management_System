@@ -1,16 +1,21 @@
 package com.sda.group2.frontend;
 
 import com.sda.group2.Account;
+import com.sda.group2.Admin;
+import com.sda.group2.Assistant;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class CreateUserOptions {
-    protected static List<UserOption> optionList(Account account) {
+    public static List<UserOption> optionList(Account account) {
         List<UserOption> optionList = new LinkedList<>();
-        optionList.add(null);
 
-        if (Enum.valueOf(account.getRole()) <= 1) {
+        if (account instanceof Admin) {
+            optionList.add(null);
+        } else if (account instanceof Assistant) {
+            optionList.add(null);
+        } else {
             optionList.add(null);
         }
 

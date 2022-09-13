@@ -19,4 +19,13 @@ public abstract class Account {
     private String lastName;
     @Column
     Role role;
+
+    //---------------------------
+    public String getPassword;
+    public String getEmail() {
+        return email;
+    }
+    public Role getRole() {
+        return role;
+    }
 }
