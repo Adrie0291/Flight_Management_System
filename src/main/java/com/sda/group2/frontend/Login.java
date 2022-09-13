@@ -1,8 +1,8 @@
 package com.sda.group2.frontend;
 
-import com.sda.group2.Account;
 import com.sda.group2.hibernate.HibernateUtil;
 
+import com.sda.group2.hibernate.hql.Account;
 import org.hibernate.SessionFactory;
 import javax.persistence.EntityManager;
 
@@ -27,7 +27,7 @@ public class Login {
             }
 
             System.out.println("Password: ");
-            if(account.get(0).getPassword.equals(sc.nextLine())){
+            if(account.get(0).getPassword().equals(sc.nextLine())){
                 System.out.println("Success!"); //tymczasowe potwierdzenie sukcesu
                 //todo przejście dalej po zalogowaniu
                 break;
