@@ -6,6 +6,7 @@ import com.sda.group2.hibernate.hql.Account;
 import com.sda.group2.hibernate.hql.User;
 import org.hibernate.SessionFactory;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import java.util.List;
 import java.util.Scanner;
@@ -43,18 +44,24 @@ public class LoginRegisterController {
         HibernateUtil.shutdown();
     }
 
-    public Account login(String email, String password) {
-        List<Account> accounts = entityManager.createQuery("from Account a where a.email = :email AND a.password = :password", Account.class)
+    public <T> login(String email, String password) {
+        entityManager.createQuery("FROM Account a WHERE a.email = :email")
+                .setParameter("email", email);
+        Query query = entityManager.createQuery("from Account a where a.email = :email and a.password = :password", T.class)
                 .setParameter("email", email)
-                .setParameter("password", password)
-                .getResultList();
+                .setParameter("password", password);
+        List<T> accounts = query.getResultList();
         if (accounts.isEmpty())
             return new User();
 
         return accounts.get(0);
     }
 
-    public void register() {
+    public void registerNewUser(String firstName, String lastName, String email, String password) {
+        User user = new User(email, password, firstName, lastName);
 
+        entityManager.getTransaction().begin();
+        entityManager.persist(user);
+        entityManager.getTransaction().commit();
     }
 }

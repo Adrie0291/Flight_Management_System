@@ -20,6 +20,16 @@ public abstract class Account {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    public Account() {
+    }
+
+    public Account(String email, String password, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getPassword() {
         return password;
     }
