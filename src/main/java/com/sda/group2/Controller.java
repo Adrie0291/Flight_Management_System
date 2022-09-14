@@ -24,6 +24,7 @@ public class Controller {
         Account account;
         do {
             printLoginRegisterMenu();
+            // TODO Exception handling/checking for correct type of input.
             int input = scanner.nextInt();
             scanner.nextLine();
             account = loginRegisterOptions(input);
@@ -74,7 +75,6 @@ public class Controller {
         String password = scanner.nextLine();
 
         lrs.registerNewUser(firstName, lastname, email, password);
-        //TODO logging in to the new account just after registration
     }
 
     private Account loginOption() {
