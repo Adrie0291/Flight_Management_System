@@ -2,8 +2,11 @@ package com.sda.group2;
 
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.Admin;
+import com.sda.group2.hibernate.hql.users.Assistant;
 import org.hibernate.cfg.NotYetImplementedException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 // Jedyna klasa, która używa sout i scanner
@@ -30,10 +33,34 @@ public class Controller {
         return account;
     }
 
-    private void mainMenu(Account account) {
+    private void mainMenu (Account account) {
         do {
+            //----------------------- v pobieranie listy
+            do {
+                List<String> optionList = new ArrayList<>(); //TODO
+                if (account instanceof Assistant) {
+                    //TODO getter listy
+            } else if (account instanceof Admin) {
+                //TODO getter listy
+            } else {
+                //TODO getter listy
+            }
+
+            //------------------------ v printowanie listy
+            System.out.println("---------------------");
+            for (int i = 0; i < optionList.size(); i++) {
+                System.out.println(i+1 + " — " + optionList.get(i));
+            }
+            //------------------------ v użycie wybranej opcji
+            int choice = optionChoice();
+            if(choice > optionList.size()) {
+                continue;
+            } else {
+                System.out.println(optionList.get(choice-1));
+            }
+            } while (true); //todo static boolean do wylogowania się
+
             // TODO Implement menu based on the Role of the Account.
-            throw new NotYetImplementedException("Main Menu is not yet implemented.");
         } while (true);
     }
 
