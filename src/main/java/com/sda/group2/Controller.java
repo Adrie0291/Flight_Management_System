@@ -24,9 +24,7 @@ public class Controller {
         Account account;
         do {
             printLoginRegisterMenu();
-            // TODO Exception handling/checking for correct type of input.
-            int input = scanner.nextInt();
-            scanner.nextLine();
+            int input = optionChoice();
             account = loginRegisterOptions(input);
         } while (account == null);
         return account;
@@ -94,5 +92,21 @@ public class Controller {
             System.out.println("You manage to successfully log in.");
         else
             System.out.println("Account with given email and password do not exist.");
+    }
+
+    private int optionChoice() {
+        int choice;
+        do{
+            if(scanner.hasNextInt()){
+                choice = scanner.nextInt();
+                scanner.nextLine();
+                break;
+            } else {
+                System.out.println("Incorrect input!\nTry again!");
+                scanner.nextLine();
+                printLoginRegisterMenu();
+            }
+        }while(true);
+        return choice;
     }
 }
