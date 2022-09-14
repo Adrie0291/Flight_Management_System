@@ -3,6 +3,7 @@ package com.sda.group2;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.Admin;
 import com.sda.group2.hibernate.hql.users.Assistant;
+import com.sda.group2.interfaces.UserOption;
 import org.hibernate.cfg.NotYetImplementedException;
 
 import java.util.ArrayList;
@@ -37,10 +38,11 @@ public class Controller {
         do {
             //----------------------- v pobieranie listy
             do {
-                List<String> optionList = new ArrayList<>(); //TODO
+                List<UserOption> optionList = new ArrayList<>(); //TODO
                 if (account instanceof Assistant) {
                     //TODO getter listy
             } else if (account instanceof Admin) {
+                    optionList = ((Admin) account).list();
                 //TODO getter listy
             } else {
                 //TODO getter listy
@@ -49,14 +51,14 @@ public class Controller {
             //------------------------ v printowanie listy
             System.out.println("---------------------");
             for (int i = 0; i < optionList.size(); i++) {
-                System.out.println(i+1 + " — " + optionList.get(i));
+                System.out.println(i+1 + " — " + optionList.get(i).getMethodName());
             }
             //------------------------ v użycie wybranej opcji
             int choice = optionChoice();
             if(choice > optionList.size()) {
                 continue;
             } else {
-                System.out.println(optionList.get(choice-1));
+                optionList.get(choice - 1).invoke();
             }
             } while (true); //todo static boolean do wylogowania się
 
