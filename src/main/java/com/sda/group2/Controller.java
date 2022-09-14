@@ -40,7 +40,8 @@ public class Controller {
     private void printLoginRegisterMenu() {
         System.out.println("""
                 1. Login
-                2. Register""");
+                2. Register
+                3. Exit program""");
     }
 
     private Account loginRegisterOptions(int input) {
@@ -50,6 +51,10 @@ public class Controller {
             }
             case 2 -> {
                 registerOption();
+                return null;
+            }
+            case 3 -> {
+                System.exit(0);
                 return null;
             }
             default -> {
