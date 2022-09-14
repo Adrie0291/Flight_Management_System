@@ -18,9 +18,9 @@
         <property name="show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
 
-        <mapping class="com.sda.group2.hibernate.hql.Account"/>
-        <mapping class="com.sda.group2.hibernate.hql.Administrator"/>
-        <mapping class="com.sda.group2.hibernate.hql.Assistant"/>
-        <mapping class="com.sda.group2.hibernate.hql.User"/>
+        <mapping class="com.sda.group2.hibernate.hql.users.Account"/>
+        <mapping class="com.sda.group2.hibernate.hql.users.Admin"/>
+        <mapping class="com.sda.group2.hibernate.hql.users.Assistant"/>
+        <mapping class="com.sda.group2.hibernate.hql.users.User"/>
     </session-factory>
 </hibernate-configuration>
