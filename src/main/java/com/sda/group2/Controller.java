@@ -96,8 +96,8 @@ public class Controller {
 
     private int optionChoice() {
         int choice;
-        do{
-            if(scanner.hasNextInt()){
+        do {
+            if (scanner.hasNextInt()) {
                 choice = scanner.nextInt();
                 scanner.nextLine();
                 break;
@@ -106,7 +106,7 @@ public class Controller {
                 scanner.nextLine();
                 printLoginRegisterMenu();
             }
-        }while(true);
+        } while (true);
         return choice;
     }
 }
