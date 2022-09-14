@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name = "ticket_id")
+    @Column(name = "ticket_id")
     private int ticketId;
     @Column
     private double price;
@@ -15,7 +15,7 @@ public class Ticket {
     private int seat;
     @Column
     private Luggage luggage;
-    @Column (name="cardID")
+    @Column(name = "card_id")
     private String cardId;
 
 }

@@ -1,16 +1,16 @@
-package com.sda.group2.hibernate.hql;
+package com.sda.group2.hibernate.hql.users;
 
 import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="role",
+@DiscriminatorColumn(name = "role",
         discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
-    private Long id;
+    @Column(name = "account_id" ,nullable = false)
+    private Long accountId;
     @Column
     private String email;
     @Column
@@ -30,7 +30,7 @@ public abstract class Account {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDiscriminatorValue() {
+        return this.getClass().getAnnotation(DiscriminatorValue.class).value();
     }
 }

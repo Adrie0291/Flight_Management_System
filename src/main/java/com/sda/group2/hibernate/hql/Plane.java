@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class Plane {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
-    private int plane_id;
+    @Column(name = "plane_id")
+    private int planeId;
     @Column
     private String company;
     @Column

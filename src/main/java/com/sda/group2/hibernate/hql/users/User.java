@@ -1,11 +1,11 @@
-package com.sda.group2.hibernate.hql;
+package com.sda.group2.hibernate.hql.users;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("USER")
-public class User extends Account  {
+public class User extends Account {
     public User() {
     }
 
