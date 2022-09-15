@@ -24,6 +24,7 @@ public class FlightController {
         }
         entityManager.getTransaction().commit();
         entityManager.close();
+        System.out.println("Flight database is up-to-date.");
     }
 
     public String getFilename() {
