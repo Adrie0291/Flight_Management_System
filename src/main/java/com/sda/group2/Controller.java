@@ -14,7 +14,6 @@ import java.util.Scanner;
 public class Controller {
     private static final Scanner scanner = new Scanner(System.in);
     private final LoginRegisterService lrs = new LoginRegisterService();
-
     public static boolean loggedIn = false;
 
     public void start() {
@@ -139,7 +138,6 @@ public class Controller {
             } else {
                 System.out.println("Incorrect input!\nTry again!");
                 scanner.nextLine();
-                printLoginRegisterMenu();
             }
         } while (true);
         return choice;

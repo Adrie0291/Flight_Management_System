@@ -35,7 +35,7 @@ public class EditAccount implements UserOption {
         @Override
         public void invoke(Account account) {
             Scanner sc = new Scanner(System.in);
-            System.out.println("##################");
+            System.out.println("###############################");
             System.out.println("Please input your new email: ");
             do{
                 if(sc.hasNextLine()) {
@@ -61,7 +61,7 @@ public class EditAccount implements UserOption {
         @Override
         public void invoke(Account account) {
             Scanner sc = new Scanner(System.in);
-            System.out.println("##################");
+            System.out.println("###############################");
             System.out.println("Please input your new password: ");
             do{
                 if(sc.hasNextLine()) {
