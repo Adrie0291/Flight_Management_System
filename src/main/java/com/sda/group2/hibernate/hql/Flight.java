@@ -39,13 +39,11 @@ public class Flight {
     }
 
 
-    public static List<Flight> loadFlightsFromFileIntoArray() {
+    public static List<Flight> loadFlightsFromFileIntoArray(String filename) {
         List<Flight> flightsList = new ArrayList<>();
         FileInput input = new FileInput();
         try {
-            // TODO: return do bazy
-            // System.out.println(input.readFlights());
-            flightsList = input.readFlights();
+            flightsList = input.readFlights(filename);
 
         } catch (FileDBNotConnectionException e) {
             System.out.println("Wystąpił wyjątek:");

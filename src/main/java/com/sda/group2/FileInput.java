@@ -16,13 +16,14 @@ import java.util.Scanner;
 public class FileInput {
 
 
-    public List<Flight> readFlights() throws FlightMappingException, FileDBNotConnectionException {
+    public List<Flight> readFlights(String filename) throws FlightMappingException, FileDBNotConnectionException {
         List<Flight> flightsList = new ArrayList<>();
         File file = null;
 
 
         try {
-            file = new File("src\\main\\resources\\flights.txt");
+            //"src\\main\\resources\\flights.txt"
+            file = new File(filename);
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();

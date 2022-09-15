@@ -8,8 +8,8 @@ public class Launcher {
         /* tutaj wrzucamy do bazy dane z pliku flights.txt
         * todo: ładowanie dowolnego pliku csv po podaniu nazwy pliku z menu
          */
-        FlightController flightController = new FlightController();
-        flightController.loadFlightsIntoDb(Flight.loadFlightsFromFileIntoArray());
+        FlightController flightController = new FlightController("src\\main\\resources\\flights.txt");
+        flightController.loadFlightsIntoDb(Flight.loadFlightsFromFileIntoArray(flightController.getFilename()));
 
         Controller controller = new Controller();
 

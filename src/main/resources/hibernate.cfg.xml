@@ -26,6 +26,5 @@
         <mapping class="com.sda.group2.hibernate.hql.Airport"/>
         <mapping class="com.sda.group2.hibernate.hql.Plane"/>
         <mapping class="com.sda.group2.hibernate.hql.Ticket"/>
-        <mapping class="com.sda.group2.hibernate.hql.Luggage"/>
     </session-factory>
 </hibernate-configuration>
