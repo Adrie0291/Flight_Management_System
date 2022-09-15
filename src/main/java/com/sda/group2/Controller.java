@@ -15,6 +15,8 @@ public class Controller {
     private static final Scanner scanner = new Scanner(System.in);
     private final LoginRegisterService lrs = new LoginRegisterService();
 
+    public static boolean loggedIn = false;
+
     public void start() {
         Admin admin = new Admin("admin@gmail.com", "silnehaslo", "Jan", "Kowal");
         lrs.createNewAccount(admin);
@@ -35,7 +37,6 @@ public class Controller {
     }
 
     private void mainMenu(Account account) {
-
         do {
             //----------------------- v pobieranie listy
             List<UserOption> optionList;
@@ -47,7 +48,9 @@ public class Controller {
                 optionList = ((User) account).getOptions();
             }
             mainMenuCreate(account, optionList);
-        } while (true); //todo static boolean do wylogowania się
+        } while (loggedIn); //todo static boolean do wylogowania się
+        account = startMenu();
+        mainMenu(account);
     }
 
     public static void mainMenuCreate(Account account, List<UserOption> list) {
@@ -115,6 +118,7 @@ public class Controller {
 
         Account account = lrs.login(email, password);
         printLoginSuccess(account != null);
+        loggedIn = true;
         return account;
     }
 
