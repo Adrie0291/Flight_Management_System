@@ -21,8 +21,8 @@ public class User extends Account {
 
     public List<UserOption> getOptions() {
         List<UserOption> list = new ArrayList();
-        list.add(new Logout());
         list.add(new EditAccount());
+        list.add(new Logout());
         //TODO
         return list;
     }
