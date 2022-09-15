@@ -3,6 +3,7 @@ package com.sda.group2.hibernate.hql;
 import javax.persistence.*;
 
 @Entity
+
 @Table(name="airport")
 public class Airport {
     @Id
@@ -27,6 +28,5 @@ public class Airport {
 
     public Airport() {
     }
-
 
 }
