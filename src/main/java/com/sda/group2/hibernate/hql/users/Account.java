@@ -1,6 +1,10 @@
 package com.sda.group2.hibernate.hql.users;
 
+import com.sda.group2.interfaces.UserOption;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -9,7 +13,7 @@ import javax.persistence.*;
 public abstract class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "account_id" ,nullable = false)
+    @Column(name = "account_id", nullable = false)
     private Long accountId;
     @Column
     private String email;
