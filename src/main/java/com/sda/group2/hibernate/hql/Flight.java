@@ -6,6 +6,8 @@ import com.sda.group2.exceptions.FlightMappingException;
 
 import javax.persistence.*;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "flight")
@@ -25,6 +27,9 @@ public class Flight {
     @Column(name = "departure_datetime")
     private LocalTime departureTime;
 
+
+    public Flight() {}
+
     public Flight(String flightNumber, String arrivalAirportId, String departureAirportId, LocalTime arrivalDateTime, LocalTime departureDateTime) {
         this.flightNumber = flightNumber;
         this.arrivalAirportId = arrivalAirportId;
@@ -33,13 +38,14 @@ public class Flight {
         this.departureTime = departureDateTime;
     }
 
-    public void loadFlightsFromFileIntoDb() {
 
+    public static List<Flight> loadFlightsFromFileIntoArray() {
+        List<Flight> flightsList = new ArrayList<>();
         FileInput input = new FileInput();
         try {
-            // TODO tutaj input do bazy
-            System.out.println(input.readFlights());
-
+            // TODO: return do bazy
+            // System.out.println(input.readFlights());
+            flightsList = input.readFlights();
 
         } catch (FileDBNotConnectionException e) {
             System.out.println("Wystąpił wyjątek:");
@@ -50,8 +56,54 @@ public class Flight {
             System.out.println(e.getMessage());
             System.out.println(e.getLine());
         }
-
+        return flightsList;
     }
 
+    public int getFlightId() {
+        return flightId;
+    }
 
+    public void setFlightId(int flightId) {
+        this.flightId = flightId;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public String getArrivalAirportId() {
+        return arrivalAirportId;
+    }
+
+    public void setArrivalAirportId(String arrivalAirportId) {
+        this.arrivalAirportId = arrivalAirportId;
+    }
+
+    public String getDepartureAirportId() {
+        return departureAirportId;
+    }
+
+    public void setDepartureAirportId(String departureAirportId) {
+        this.departureAirportId = departureAirportId;
+    }
+
+    public LocalTime getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(LocalTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public LocalTime getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(LocalTime departureTime) {
+        this.departureTime = departureTime;
+    }
 }
