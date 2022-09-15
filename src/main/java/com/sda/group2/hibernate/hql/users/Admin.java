@@ -1,6 +1,7 @@
 package com.sda.group2.hibernate.hql.users;
 
 import com.sda.group2.interfaces.UserOption;
+import com.sda.group2.interfaces.options.Logout;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -18,33 +19,10 @@ public class Admin extends Account {
         super(email, password, firstName, lastName);
     }
 
-    public List<UserOption> list() {
+    public List<UserOption> getOptions() {
         List<UserOption> list = new ArrayList();
-        list.add(new FirstMethod());
-        list.add(new FirstMad());
+        list.add(new Logout());
+        //TODO
         return list;
-    }
-
-    private class FirstMethod implements UserOption {
-        @Override
-        public void invoke() {
-            System.out.println("Nice!");
-        }
-
-        @Override
-        public String getMethodName() {
-            return "First method in list";
-        }
-    }
-    private class FirstMad implements UserOption {
-        @Override
-        public void invoke() {
-            System.out.println("XDD");
-        }
-
-        @Override
-        public String getMethodName() {
-            return "Second Method";
-        }
     }
 }

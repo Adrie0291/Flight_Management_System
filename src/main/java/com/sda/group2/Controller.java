@@ -3,6 +3,7 @@ package com.sda.group2;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.Admin;
 import com.sda.group2.hibernate.hql.users.Assistant;
+import com.sda.group2.hibernate.hql.users.User;
 import com.sda.group2.interfaces.UserOption;
 import org.hibernate.cfg.NotYetImplementedException;
 
@@ -34,36 +35,31 @@ public class Controller {
         return account;
     }
 
-    private void mainMenu (Account account) {
+    private void mainMenu(Account account) {
+
         do {
             //----------------------- v pobieranie listy
-            do {
-                List<UserOption> optionList = new ArrayList<>(); //TODO
-                if (account instanceof Assistant) {
-                    //TODO getter listy
+            List<UserOption> optionList;
+            if (account instanceof Assistant) {
+                optionList = ((Assistant) account).getOptions();
             } else if (account instanceof Admin) {
-                    optionList = ((Admin) account).list();
-                //TODO getter listy
+                optionList = ((Admin) account).getOptions();
             } else {
-                //TODO getter listy
+                optionList = ((User) account).getOptions();
             }
 
             //------------------------ v printowanie listy
-            System.out.println("---------------------");
+            System.out.println("###############################");
             for (int i = 0; i < optionList.size(); i++) {
-                System.out.println(i+1 + " — " + optionList.get(i).getMethodName());
+                System.out.println(i + 1 + " - " + optionList.get(i).getMethodName());
             }
             //------------------------ v użycie wybranej opcji
             int choice = optionChoice();
-            if(choice > optionList.size()) {
-                continue;
-            } else {
+            if (choice <= optionList.size()) {
                 optionList.get(choice - 1).invoke();
             }
-            } while (true); //todo static boolean do wylogowania się
+        } while (true); //todo static boolean do wylogowania się
 
-            // TODO Implement menu based on the Role of the Account.
-        } while (true);
     }
 
     private void printLoginRegisterMenu() {
