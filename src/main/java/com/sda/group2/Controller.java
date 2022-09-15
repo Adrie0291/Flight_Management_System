@@ -2,8 +2,13 @@ package com.sda.group2;
 
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.Admin;
+import com.sda.group2.hibernate.hql.users.Assistant;
+import com.sda.group2.hibernate.hql.users.User;
+import com.sda.group2.interfaces.UserOption;
 import org.hibernate.cfg.NotYetImplementedException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 // Jedyna klasa, która używa sout i scanner
@@ -31,10 +36,30 @@ public class Controller {
     }
 
     private void mainMenu(Account account) {
+
         do {
-            // TODO Implement menu based on the Role of the Account.
-            throw new NotYetImplementedException("Main Menu is not yet implemented.");
-        } while (true);
+            //----------------------- v pobieranie listy
+            List<UserOption> optionList;
+            if (account instanceof Assistant) {
+                optionList = ((Assistant) account).getOptions();
+            } else if (account instanceof Admin) {
+                optionList = ((Admin) account).getOptions();
+            } else {
+                optionList = ((User) account).getOptions();
+            }
+
+            //------------------------ v printowanie listy
+            System.out.println("###############################");
+            for (int i = 0; i < optionList.size(); i++) {
+                System.out.println(i + 1 + " - " + optionList.get(i).getMethodName());
+            }
+            //------------------------ v użycie wybranej opcji
+            int choice = optionChoice();
+            if (choice <= optionList.size()) {
+                optionList.get(choice - 1).invoke();
+            }
+        } while (true); //todo static boolean do wylogowania się
+
     }
 
     private void printLoginRegisterMenu() {
