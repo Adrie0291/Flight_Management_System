@@ -1,6 +1,7 @@
 package com.sda.group2.interfaces.options;
 
 import com.sda.group2.LoginRegisterService;
+import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.Assistant;
 import com.sda.group2.interfaces.UserOption;
 
@@ -9,7 +10,7 @@ import java.util.Scanner;
 
 public class AssistantCreation implements UserOption {
     @Override
-    public void invoke() {
+    public void invoke(Account account) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter e-mail: ");
         String email = scanner.nextLine();

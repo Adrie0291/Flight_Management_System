@@ -19,6 +19,8 @@ public class EditAccount implements UserOption {
             list.add(new ChangeEmail());
             list.add(new ChangePassword());
             list.add(new Back());
+
+            Controller.mainMenuCreate(account, list);
         }
         while (!back);
     }
@@ -28,7 +30,7 @@ public class EditAccount implements UserOption {
         return "Change account details";
     }
 
-    private class ChangeEmail implements UserOption {
+    private static class ChangeEmail implements UserOption {
 
         @Override
         public void invoke(Account account) {
@@ -54,7 +56,7 @@ public class EditAccount implements UserOption {
         }
     }
 
-    private class ChangePassword implements UserOption {
+    private static class ChangePassword implements UserOption {
 
         @Override
         public void invoke(Account account) {
