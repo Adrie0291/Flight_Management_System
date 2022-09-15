@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 // Jedyna klasa, która używa sout i scanner
 public class Controller {
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     private final LoginRegisterService lrs = new LoginRegisterService();
 
     public void start() {
@@ -47,22 +47,24 @@ public class Controller {
             } else {
                 optionList = ((User) account).getOptions();
             }
-
-            //------------------------ v printowanie listy
-            System.out.println("###############################");
-            for (int i = 0; i < optionList.size(); i++) {
-                System.out.println(i + 1 + " - " + optionList.get(i).getMethodName());
-            }
-            //------------------------ v użycie wybranej opcji
-            int choice = optionChoice();
-            if (choice <= optionList.size()) {
-                optionList.get(choice - 1).invoke();
-            }
+            mainMenuCreate(account, optionList);
         } while (true); //todo static boolean do wylogowania się
-
     }
 
-    private void printLoginRegisterMenu() {
+    public static void mainMenuCreate(Account account, List<UserOption> list) {
+        //------------------------ v printowanie listy
+        System.out.println("###############################");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(i + 1 + " - " + list.get(i).getMethodName());
+        }
+        //------------------------ v użycie wybranej opcji
+        int choice = optionChoice();
+        if (choice <= list.size()) {
+            list.get(choice - 1).invoke(account);
+        }
+    }
+
+    private static void printLoginRegisterMenu() {
         System.out.println("""
                 1. Login
                 2. Register
@@ -124,7 +126,7 @@ public class Controller {
             System.out.println("Account with given email and password do not exist.");
     }
 
-    private int optionChoice() {
+    private static int optionChoice() {
         int choice;
         do {
             if (scanner.hasNextInt()) {

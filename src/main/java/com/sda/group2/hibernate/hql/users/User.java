@@ -1,6 +1,7 @@
 package com.sda.group2.hibernate.hql.users;
 
 import com.sda.group2.interfaces.UserOption;
+import com.sda.group2.interfaces.options.EditAccount;
 import com.sda.group2.interfaces.options.Logout;
 
 import javax.persistence.DiscriminatorValue;
@@ -21,6 +22,7 @@ public class User extends Account {
     public List<UserOption> getOptions() {
         List<UserOption> list = new ArrayList();
         list.add(new Logout());
+        list.add(new EditAccount());
         //TODO
         return list;
     }
