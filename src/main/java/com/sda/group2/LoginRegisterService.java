@@ -28,17 +28,10 @@ public class LoginRegisterService {
         return accounts.get(0);
     }
 
-    public void registerNewUser(String firstName, String lastName, String email, String password) {
-        User user = new User(email, password, firstName, lastName);
-
+    public void createNewAccount(Account account){
         entityManager.getTransaction().begin();
-        entityManager.persist(user);
+        entityManager.persist(account);
         entityManager.getTransaction().commit();
     }
 
-    public void createNewAdminAccount(Admin admin) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(admin);
-        entityManager.getTransaction().commit();
-    }
 }
