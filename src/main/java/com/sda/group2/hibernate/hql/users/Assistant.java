@@ -12,6 +12,14 @@ import java.util.List;
 @DiscriminatorValue("ASSISTANT")
 public class Assistant extends Account {
 
+    public Assistant() {
+    }
+
+    public Assistant(String email, String password, String firstName, String lastName) {
+        super(email, password, firstName, lastName);
+    }
+
+
     public List<UserOption> getOptions() {
         List<UserOption> list = new ArrayList();
         list.add(new Logout());

@@ -11,14 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Jedyna klasa, która używa sout i scanner
 public class Controller {
     private final Scanner scanner = new Scanner(System.in);
     private final LoginRegisterService lrs = new LoginRegisterService();
 
     public void start() {
         Admin admin = new Admin("admin@gmail.com", "silnehaslo", "Jan", "Kowal");
-        lrs.createNewAdminAccount(admin);
+        lrs.createNewAccount(admin);
         // First menu on the beginning of the program.
         Account account = startMenu();
         // Next menu for specific user
@@ -102,7 +101,7 @@ public class Controller {
         System.out.println("Password:");
         String password = scanner.nextLine();
 
-        lrs.registerNewUser(firstName, lastname, email, password);
+        lrs.createNewAccount(new User(firstName, lastname, email, password));
     }
 
     private Account loginOption() {
