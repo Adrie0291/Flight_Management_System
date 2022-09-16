@@ -16,7 +16,7 @@ public class User extends Account {
     }
 
     public User (String email, String password, String firstName, String lastName) {
-        super(email, password, firstName, lastName);
+        super(firstName, lastName,email,password);
     }
 
     public List<UserOption> getOptions() {

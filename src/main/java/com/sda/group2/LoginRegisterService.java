@@ -29,9 +29,12 @@ public class LoginRegisterService {
     }
 
     public void createNewAccount(Account account){
-        entityManager.getTransaction().begin();
-        entityManager.persist(account);
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(account);
+            entityManager.getTransaction().commit();
+        } catch (Exception e){
+            System.out.println("Konto z podanym adresem e-mail istnieje w bazie danych");
+        }
     }
-
 }
