@@ -14,8 +14,9 @@ public class Ticket {
     @Column
     private int seat;
     @Column
+    @Enumerated(EnumType.STRING)
     private Luggage luggage;
-    @Column(name = "card_id")
-    private String cardId;
+    @Column(name = "passport_number")
+    private String passportNumber;
 
 }
