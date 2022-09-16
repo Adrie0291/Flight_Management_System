@@ -1,10 +1,6 @@
 package com.sda.group2.hibernate.hql.users;
 
-import com.sda.group2.interfaces.UserOption;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -14,7 +10,7 @@ public abstract class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "account_id", nullable = false)
-    private Long accountId;
+    private int accountId;
     @Column (unique = true, nullable = false)
     private String email;
     @Column
@@ -23,8 +19,46 @@ public abstract class Account {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
+    @Column
+    private int wallet;
+
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
+    }
+
+    public int getWallet() {
+        return wallet;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public Account() {
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Account(String email, String password, String firstName, String lastName) {

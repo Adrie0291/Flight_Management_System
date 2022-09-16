@@ -1,6 +1,7 @@
 package com.sda.group2.interfaces.options;
 
 import com.sda.group2.Controller;
+import com.sda.group2.DataBaseService;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.interfaces.UserOption;
 
@@ -16,6 +17,8 @@ public class EditAccount implements UserOption {
     public void invoke(Account account) {
         do {
             List<UserOption> list = new ArrayList<>();
+            list.add(new ChangeFirstName());
+            list.add(new ChangeLastName());
             list.add(new ChangeEmail());
             list.add(new ChangePassword());
             list.add(new Back());
@@ -25,6 +28,55 @@ public class EditAccount implements UserOption {
         while (!back);
     }
 
+
+    private static class ChangeFirstName implements UserOption {
+
+        @Override
+        public void invoke(Account account) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("###############################");
+            System.out.println("Please input your new first name: ");
+            do {
+                if (sc.hasNextLine()) {
+                    String newFirstName = sc.nextLine();
+                    DataBaseService dtb = new DataBaseService();
+                    dtb.changeFirstName(newFirstName, account.getAccountId());
+                    break;
+                }
+            } while (true);
+        }
+
+        @Override
+        public String getMethodName() {
+            return "Change first name";
+        }
+    }
+
+    //tutaj
+    private static class ChangeLastName implements UserOption {
+
+        @Override
+        public void invoke(Account account) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("###############################");
+            System.out.println("Please input your new last name: ");
+            do {
+                if (sc.hasNextLine()) {
+                    String newLastName = sc.nextLine();
+                    DataBaseService dtb = new DataBaseService();
+                    dtb.changeLastName(newLastName, account.getAccountId());
+                    break;
+                }
+            } while (true);
+        }
+
+        @Override
+        public String getMethodName() {
+            return "Change last name";
+        }
+    }
+
+    //tutaj
     @Override
     public String getMethodName() {
         return "Change account details";
@@ -37,17 +89,18 @@ public class EditAccount implements UserOption {
             Scanner sc = new Scanner(System.in);
             System.out.println("###############################");
             System.out.println("Please input your new email: ");
-            do{
-                if(sc.hasNextLine()) {
+            do {
+                if (sc.hasNextLine()) {
                     String newEmail = sc.nextLine();
                     if (newEmail.matches("\\b.+[@]\\w+[.]\\w+\\b")) {
-                        //TODO update z SQL
+                        DataBaseService dtb = new DataBaseService();
+                        dtb.changeEmail(newEmail, account.getAccountId());
                         break;
                     } else {
                         System.out.println("Incorrect email structure!");
                     }
                 }
-            }while(true);
+            } while (true);
         }
 
         @Override
@@ -63,17 +116,18 @@ public class EditAccount implements UserOption {
             Scanner sc = new Scanner(System.in);
             System.out.println("###############################");
             System.out.println("Please input your new password: ");
-            do{
-                if(sc.hasNextLine()) {
+            do {
+                if (sc.hasNextLine()) {
                     String newPassword = sc.nextLine();
                     if (!newPassword.isEmpty()) {
-                        //TODO update z SQL
+                        DataBaseService dtb = new DataBaseService();
+                        dtb.changePassword(newPassword, account.getAccountId());
                         break;
                     } else {
                         System.out.println("Password cannot be empty!\nPlease try again!\n");
                     }
                 }
-            }while(true);
+            } while (true);
         }
 
         @Override
@@ -81,6 +135,7 @@ public class EditAccount implements UserOption {
             return "Change password";
         }
     }
+
 
     private class Back implements UserOption {
 
