@@ -2,6 +2,7 @@ package com.sda.group2;
 
 import com.sda.group2.hibernate.HibernateUtil;
 import com.sda.group2.hibernate.hql.users.Account;
+
 import com.sda.group2.hibernate.hql.users.User;
 
 import javax.persistence.EntityManager;
@@ -12,19 +13,19 @@ public class DataBaseService {
 
     public void changeEmail(String newEmail, int id) {
         entm.getTransaction().begin();
-        User userFROMdb = entm.find(User.class, id);
-        userFROMdb.setEmail(newEmail);
+        Account accountFromDB = entm.find(Account.class, id);
+        accountFromDB.setEmail(newEmail);
         System.out.println("Update email was sucessful");
-        entm.merge(userFROMdb);
+        entm.merge(accountFromDB);
         entm.getTransaction().commit();
     }
 
     public void changePassword(String newPassword, int accountId) {
         entm.getTransaction().begin();
-        User userFROMdb = entm.find(User.class, accountId);
-        userFROMdb.setPassword(newPassword);
+        Account AccountFromDB = entm.find(Account.class, accountId);
+        AccountFromDB.setPassword(newPassword);
         System.out.println("Update password was sucessful");
-        entm.merge(userFROMdb);
+        entm.merge(AccountFromDB);
         entm.getTransaction().commit();
     }
 
@@ -43,19 +44,19 @@ public class DataBaseService {
     public void changeFirstName(String newFirstName, int accountId) {
 
         entm.getTransaction().begin();
-        User userFROMdb = entm.find(User.class, accountId);
-        userFROMdb.setFirstName(newFirstName);
+        Account accountFromDB = entm.find(Account.class, accountId);
+        accountFromDB.setFirstName(newFirstName);
         System.out.println("Update firstname was sucessful");
-        entm.merge(userFROMdb);
+        entm.merge(accountFromDB);
         entm.getTransaction().commit();
     }
 
     public void changeLastName(String lastName, int accountId) {
         entm.getTransaction().begin();
-        User userFROMdb = entm.find(User.class, accountId);
-        userFROMdb.setLastName(lastName);
+        Account accountFromDB = entm.find(Account.class, accountId);
+        accountFromDB.setLastName(lastName);
         System.out.println("Update last name was sucessful");
-        entm.merge(userFROMdb);
+        entm.merge(accountFromDB);
         entm.getTransaction().commit();
     }
 }
