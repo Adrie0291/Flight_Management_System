@@ -5,7 +5,6 @@ import com.sda.group2.hibernate.hql.Flight;
 import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.List;
 
 public class FlightController {
@@ -20,7 +19,7 @@ public class FlightController {
 
     public void loadFlightsIntoDb(List<Flight> flights) {
         entityManager.getTransaction().begin();
-        for(Flight flight : flights) {
+        for (Flight flight : flights) {
             entityManager.persist(flight);
         }
         entityManager.getTransaction().commit();
