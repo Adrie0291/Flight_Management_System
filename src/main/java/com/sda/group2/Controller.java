@@ -1,76 +1,55 @@
 package com.sda.group2;
 
+import com.sda.group2.hibernate.HibernateUtil;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.Admin;
-import com.sda.group2.hibernate.hql.users.Assistant;
 import com.sda.group2.hibernate.hql.users.User;
-import com.sda.group2.interfaces.UserOption;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
     private static final Scanner scanner = new Scanner(System.in);
     private final LoginRegisterService lrs = new LoginRegisterService();
+    // TODO it has no function. We can add it to the do-while in startMenu() function.
     public static boolean loggedIn = false;
 
     public void start() {
+        createAdmin();
+        // TODO For now we are exiting program in one point - startMenuOptions() method which allows to close the program.
+        do {
+            // First menu on the beginning of the program.
+            Account account = startMenu();
+            do {
+                MenuController menuController = new MenuController();
+                // Next menu for specific user
+                menuController.mainMenu(account);
+            } while (loggedIn);
+        } while (true);
+    }
+
+    private void createAdmin() {
         Admin admin = new Admin("admin@gmail.com", "silnehaslo", "Jan", "Kowal");
         lrs.createNewAccount(admin);
-        // First menu on the beginning of the program.
-        Account account = startMenu();
-        // Next menu for specific user
-        mainMenu(account);
     }
 
     private Account startMenu() {
         Account account;
         do {
-            printLoginRegisterMenu();
+            printStartMenu();
             int input = optionChoice();
-            account = loginRegisterOptions(input);
+            account = startMenuOptions(input);
         } while (account == null);
         return account;
     }
 
-    private void mainMenu(Account account) {
-        do {
-            //----------------------- v pobieranie listy
-            List<UserOption> optionList;
-            if (account instanceof Assistant) {
-                optionList = ((Assistant) account).getOptions();
-            } else if (account instanceof Admin) {
-                optionList = ((Admin) account).getOptions();
-            } else {
-                optionList = ((User) account).getOptions();
-            }
-            mainMenuCreate(account, optionList);
-        } while (loggedIn); //todo static boolean do wylogowania się
-        account = startMenu();
-        mainMenu(account);
-    }
-
-    public static void mainMenuCreate(Account account, List<UserOption> list) {
-        //------------------------ v printowanie listy
-        System.out.println("###############################");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(i + 1 + " - " + list.get(i).getMethodName());
-        }
-        //------------------------ v użycie wybranej opcji
-        int choice = optionChoice();
-        if (choice <= list.size()) {
-            list.get(choice - 1).invoke(account);
-        }
-    }
-
-    private static void printLoginRegisterMenu() {
+    private void printStartMenu() {
         System.out.println("""
                 1. Login
                 2. Register
                 3. Exit program""");
     }
 
-    private Account loginRegisterOptions(int input) {
+    private Account startMenuOptions(int input) {
         switch (input) {
             case 1 -> {
                 return loginOption();
@@ -80,6 +59,7 @@ public class Controller {
                 return null;
             }
             case 3 -> {
+                HibernateUtil.shutdown();
                 System.exit(0);
                 return null;
             }
@@ -126,7 +106,7 @@ public class Controller {
             System.out.println("Account with given email and password do not exist.");
     }
 
-    private static int optionChoice() {
+    private int optionChoice() {
         int choice;
         do {
             if (scanner.hasNextInt()) {
