@@ -30,7 +30,7 @@ public class DataBaseService {
         System.out.println("You have " + account.getWallet() + " PLN.");
     }
 
-    public void addMoney(Account account, int money) {
+    public void setBalance(Account account, double money) {
         entm.getTransaction().begin();
         account.setWallet(money);
         entm.merge(account);
