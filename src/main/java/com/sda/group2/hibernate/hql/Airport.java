@@ -42,11 +42,11 @@ public class Airport {
             airportsList = input.readAirports(filename);
 
         } catch (FileDBNotConnectionException e) {
-            System.out.println("Wystąpił wyjątek:");
+            System.out.println("You have got exception:");
             System.out.println(e.getMessage());
 
         }catch (FlightMappingException e){
-            System.out.println("Wystąpił wyjątek:");
+            System.out.println("You have got exception:");
             System.out.println(e.getMessage());
             System.out.println(e.getLine());
         }

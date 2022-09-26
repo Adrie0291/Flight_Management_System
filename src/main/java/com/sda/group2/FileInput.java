@@ -33,7 +33,7 @@ public class FileInput {
                 flightsList.add(flight);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Nie znaleziono pliku!");
+            System.out.println("File not found!");
             e.printStackTrace();
         }
 
@@ -54,7 +54,7 @@ public class FileInput {
             return flight;
         } catch (Exception exception) {
             //throw new Exception("Niepoprawny format pliku!!!! dla linii: " + line);
-            throw new FlightMappingException("Niepoprawny format pliku!!!! dla linii: " + line, line);
+            throw new FlightMappingException("Bad file format for line: " + line, line);
         }
     }
     // Airports
@@ -75,7 +75,7 @@ public class FileInput {
                 airportsList.add(airport);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Nie znaleziono pliku!");
+            System.out.println("File not found!");
             e.printStackTrace();
         }
 
@@ -94,7 +94,7 @@ public class FileInput {
 
         } catch (Exception exception) {
             //throw new Exception("Niepoprawny format pliku!!!! dla linii: " + line);
-            throw new FlightMappingException("Niepoprawny format pliku!!!! dla linii: " + line, line);
+            throw new FlightMappingException("Bad file format for line: " + line, line);
         }
 
     }
@@ -120,7 +120,7 @@ public class FileInput {
                 planesList.add(plane);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Nie znaleziono pliku!");
+            System.out.println("File not found!");
             e.printStackTrace();
         }
 
@@ -141,7 +141,7 @@ public class FileInput {
 
         } catch (Exception exception) {
             //throw new Exception("Niepoprawny format pliku!!!! dla linii: " + line);
-            throw new FlightMappingException("Niepoprawny format pliku!!!! dla linii: " + line, line);
+            throw new FlightMappingException("Bad file format for line: " + line, line);
         }
 
     }
