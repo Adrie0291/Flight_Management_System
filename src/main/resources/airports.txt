@@ -1,0 +1,7 @@
+Poland;WAW
+Poland;KRK
+Poland;GDA
+Poland;KAT
+Germany;BER
+Slovakia;BRA
+Austria;VNN

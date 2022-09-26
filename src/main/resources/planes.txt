@@ -1,0 +1,12 @@
+Airbus A380;SwissAir;120
+Airbus A380;LOT;120
+Airbus A380;Finnair;120
+Airbus A380;VirginAir;120
+Boeing 747;SwissAir;200
+Boeing 747;Lufthansa;200
+Boeing 747;SwissAir;200
+Boeing 777;LOT;250
+Boeing 747;LOT;200
+Boeing 747;SwissAir;200
+Boeing 747;Lufthansa;200
+Boeing 747;SwissAir;200
