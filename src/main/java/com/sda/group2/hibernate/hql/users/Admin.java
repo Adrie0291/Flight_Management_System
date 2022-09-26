@@ -1,6 +1,7 @@
 package com.sda.group2.hibernate.hql.users;
 
 import com.sda.group2.interfaces.UserOption;
+import com.sda.group2.interfaces.options.AdminFileLoad;
 import com.sda.group2.interfaces.options.AssistantCreation;
 import com.sda.group2.interfaces.options.Logout;
 
@@ -23,6 +24,7 @@ public class Admin extends Account {
     public List<UserOption> getOptions() {
         List<UserOption> list = new ArrayList();
         list.add(new AssistantCreation());
+        list.add(new AdminFileLoad());
         list.add(new Logout());
         //TODO
         return list;

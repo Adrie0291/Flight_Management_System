@@ -27,8 +27,8 @@ public class Flight {
     @Column(name = "departure_datetime")
     private LocalTime departureTime;
 
-    public Flight() {
-    }
+
+    public Flight() {}
 
     public Flight(String flightNumber, String arrivalAirportId, String departureAirportId, LocalTime arrivalDateTime, LocalTime departureDateTime) {
         this.flightNumber = flightNumber;
@@ -38,6 +38,7 @@ public class Flight {
         this.departureTime = departureDateTime;
     }
 
+
     public static List<Flight> loadFlightsFromFileIntoArray(String filename) {
         List<Flight> flightsList = new ArrayList<>();
         FileInput input = new FileInput();
@@ -45,11 +46,11 @@ public class Flight {
             flightsList = input.readFlights(filename);
 
         } catch (FileDBNotConnectionException e) {
-            System.out.println("Wystąpił wyjątek:");
+            System.out.println("You have got exception:");
             System.out.println(e.getMessage());
 
-        } catch (FlightMappingException e) {
-            System.out.println("Wystąpił wyjątek:");
+        }catch (FlightMappingException e){
+            System.out.println("You have got exception:");
             System.out.println(e.getMessage());
             System.out.println(e.getLine());
         }
