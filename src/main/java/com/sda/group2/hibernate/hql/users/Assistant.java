@@ -20,7 +20,6 @@ public class Assistant extends Account {
         super(email, password, firstName, lastName);
     }
 
-
     public List<UserOption> getOptions() {
         List<UserOption> list = new ArrayList();
         list.add(new EditAccount());

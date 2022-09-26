@@ -3,8 +3,7 @@ package com.sda.group2.hibernate.hql;
 import javax.persistence.*;
 
 @Entity
-
-@Table(name="airport")
+@Table(name = "airport")
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +27,4 @@ public class Airport {
 
     public Airport() {
     }
-
-
 }

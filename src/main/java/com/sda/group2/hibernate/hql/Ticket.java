@@ -18,5 +18,4 @@ public class Ticket {
     private Luggage luggage;
     @Column(name = "passport_number")
     private String passportNumber;
-
 }
