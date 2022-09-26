@@ -20,13 +20,13 @@ public abstract class Account {
     @Column(name = "last_name", nullable = false)
     private String lastName;
     @Column
-    private int wallet;
+    private double wallet;
 
-    public void setWallet(int wallet) {
+    public void setWallet(double wallet) {
         this.wallet = wallet;
     }
 
-    public int getWallet() {
+    public double getWallet() {
         return wallet;
     }
 
