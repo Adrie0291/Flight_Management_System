@@ -34,7 +34,7 @@ public class LoginRegisterService {
             entityManager.persist(account);
             entityManager.getTransaction().commit();
         } catch (Exception e){
-            System.out.println("Konto z podanym adresem e-mail istnieje w bazie danych");
+            System.out.println("Given e-mail is not exist.");
         }
     }
 }

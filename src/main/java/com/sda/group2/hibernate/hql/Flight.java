@@ -27,6 +27,8 @@ public class Flight {
     @Column(name = "departure_datetime")
     private LocalTime departureTime;
 
+    @Column(name = "delay_minutes")
+    private int delayMinutes;
 
     public Flight() {}
 
@@ -103,5 +105,26 @@ public class Flight {
 
     public void setDepartureTime(LocalTime departureTime) {
         this.departureTime = departureTime;
+    }
+
+    public int getDelayMinutes() {
+        return delayMinutes;
+    }
+
+    public void setDelayMinutes(int delayMinutes) {
+        this.delayMinutes = delayMinutes;
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "flightId=" + flightId +
+                ", flightNumber='" + flightNumber + '\'' +
+                ", arrivalAirportId='" + arrivalAirportId + '\'' +
+                ", departureAirportId='" + departureAirportId + '\'' +
+                ", arrivalTime=" + arrivalTime +
+                ", departureTime=" + departureTime +
+                ", delayMinutes=" + delayMinutes +
+                '}';
     }
 }

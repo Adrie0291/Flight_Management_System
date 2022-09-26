@@ -1,10 +1,13 @@
 package com.sda.group2;
 
 import com.sda.group2.hibernate.HibernateUtil;
+import com.sda.group2.hibernate.hql.Flight;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
 
 
 public class DataBaseService {
@@ -57,6 +60,24 @@ public class DataBaseService {
         System.out.println("Update last name was sucessful");
         entm.merge(userFROMdb);
         entm.getTransaction().commit();
+    }
+
+    public List<Flight> showFlights() {
+        Query query = entm.createQuery("FROM Flight f");
+        List<Flight> flights = query.getResultList();
+        if (flights.isEmpty())
+            return null;
+        return flights;
+    }
+
+    public List<Flight> showFilteredFlights(String arrivalAirport, String departureAirport) {
+        Query query = entm.createQuery("FROM Flight f WHERE f.arrivalAirportId = :arrivalAirport OR f.departureAirportId = :departureAirport")
+                .setParameter("arrivalAirport", arrivalAirport)
+                .setParameter("departureAirport", departureAirport);
+        List<Flight> flights = query.getResultList();
+        if (flights.isEmpty())
+            return null;
+        return flights;
     }
 }
 

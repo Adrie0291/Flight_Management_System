@@ -44,7 +44,7 @@ public class AdminFileLoad implements UserOption {
 
     @Override
     public String getMethodName() {
-        return "Create file load option";
+        return "Load files (flights, airports, planes) option.";
     }
 
 }
