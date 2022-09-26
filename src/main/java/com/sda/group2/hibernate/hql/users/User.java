@@ -22,8 +22,8 @@ public class User extends Account {
         List<UserOption> list = new ArrayList();
         list.add(new EditAccount());
         list.add(new Wallet());
+        list.add(new FileAComplaint());
         list.add(new Logout());
-
         //TODO
         return list;
     }

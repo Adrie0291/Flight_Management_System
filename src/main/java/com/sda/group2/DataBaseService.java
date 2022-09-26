@@ -1,6 +1,7 @@
 package com.sda.group2;
 
 import com.sda.group2.hibernate.HibernateUtil;
+import com.sda.group2.hibernate.hql.Complaint;
 import com.sda.group2.hibernate.hql.users.Account;
 
 import javax.persistence.EntityManager;
@@ -54,5 +55,19 @@ public class DataBaseService {
         entm.merge(accountFromDB);
         entm.getTransaction().commit();
     }
+
+    public void sendAComplaint(Complaint complaint){
+        entm.getTransaction().begin();
+        entm.persist(complaint);
+        System.out.println("Thank you!");
+        entm.getTransaction().commit();
+    }
+
+    public void getListOfComplaint(){
+        entm.getTransaction().begin();
+        System.out.println(entm.createQuery("FROM Complaint", Complaint.class).getResultList());
+        entm.getTransaction().commit();
+    }
+
 }
 
