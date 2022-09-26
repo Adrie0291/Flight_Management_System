@@ -28,9 +28,7 @@ public class EditAccount implements UserOption {
         while (!back);
     }
 
-
     private static class ChangeFirstName implements UserOption {
-
         @Override
         public void invoke(Account account) {
             Scanner sc = new Scanner(System.in);

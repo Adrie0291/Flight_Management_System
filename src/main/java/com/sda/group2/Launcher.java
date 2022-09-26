@@ -13,10 +13,7 @@ public class Launcher {
 
         Controller controller = new Controller();
 
-
         controller.start();
-
-
 
         HibernateUtil.shutdown();
     }

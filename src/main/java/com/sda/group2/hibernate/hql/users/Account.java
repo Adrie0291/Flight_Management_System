@@ -11,7 +11,7 @@ public abstract class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "account_id", nullable = false)
     private int accountId;
-    @Column (unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
     @Column
     private String password;

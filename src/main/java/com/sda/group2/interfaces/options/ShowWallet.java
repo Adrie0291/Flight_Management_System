@@ -7,11 +7,8 @@ import com.sda.group2.interfaces.UserOption;
 public class ShowWallet implements UserOption {
     @Override
     public void invoke(Account account) {
-
         DataBaseService dtb = new DataBaseService();
         dtb.showWallet(account);
-
-
     }
 
     @Override

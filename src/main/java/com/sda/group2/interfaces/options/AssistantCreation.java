@@ -7,7 +7,6 @@ import com.sda.group2.interfaces.UserOption;
 
 import java.util.Scanner;
 
-
 public class AssistantCreation implements UserOption {
     @Override
     public void invoke(Account account) {
@@ -20,7 +19,7 @@ public class AssistantCreation implements UserOption {
         String name = scanner.nextLine();
         System.out.println("Enter lastname: ");
         String lastname = scanner.nextLine();
-        new LoginRegisterService().createNewAccount(new Assistant(email,password,name,lastname));
+        new LoginRegisterService().createNewAccount(new Assistant(email, password, name, lastname));
     }
 
     @Override

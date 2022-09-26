@@ -1,25 +1,20 @@
 package com.sda.group2;
 
-
 import com.sda.group2.exceptions.FileDBNotConnectionException;
 import com.sda.group2.exceptions.FlightMappingException;
 import com.sda.group2.hibernate.hql.Flight;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class FileInput {
-
-
     public List<Flight> readFlights(String filename) throws FlightMappingException, FileDBNotConnectionException {
         List<Flight> flightsList = new ArrayList<>();
-        File file = null;
-
+        File file;
 
         try {
             //"src\\main\\resources\\flights.txt"
@@ -31,10 +26,9 @@ public class FileInput {
                 flightsList.add(flight);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Nie znaleziono pliku!");
+            System.out.println("File not found!");
             e.printStackTrace();
         }
-
         return flightsList;
     }
 
@@ -48,16 +42,10 @@ public class FileInput {
             LocalTime arrivalTime = LocalTime.parse(elements[3].trim());
             LocalTime departureTime = LocalTime.parse(elements[4].trim());
 
-            Flight flight = new Flight(flightNumber, arrivalAirportId,departureAirportId,arrivalTime,departureTime);
-            return flight;
+            return new Flight(flightNumber, arrivalAirportId, departureAirportId, arrivalTime, departureTime);
         } catch (Exception exception) {
             //throw new Exception("Niepoprawny format pliku!!!! dla linii: " + line);
-            throw new FlightMappingException("Niepoprawny format pliku!!!! dla linii: " + line, line);
+            throw new FlightMappingException("Incorrect file format!!! For line: " + line, line);
         }
-
     }
-
-
-
-
 }

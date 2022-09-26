@@ -5,9 +5,7 @@ import com.sda.group2.hibernate.hql.users.Admin;
 import com.sda.group2.hibernate.hql.users.Assistant;
 import com.sda.group2.hibernate.hql.users.User;
 import com.sda.group2.interfaces.UserOption;
-import org.hibernate.cfg.NotYetImplementedException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
