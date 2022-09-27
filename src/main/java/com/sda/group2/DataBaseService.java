@@ -67,7 +67,7 @@ public class DataBaseService {
         entm.getTransaction().commit();
     }
 
-    public List<Complaint> getListOfComplaint(){
+    public List<Complaint> getListOfComplaint() {
         entm.getTransaction().begin();
         List<Complaint> complaints = entm.createQuery("FROM Complaint", Complaint.class).getResultList();
         entm.getTransaction().commit();

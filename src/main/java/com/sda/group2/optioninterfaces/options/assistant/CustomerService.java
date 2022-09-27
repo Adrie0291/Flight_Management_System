@@ -1,6 +1,5 @@
 package com.sda.group2.optioninterfaces.options.assistant;
 
-import com.sda.group2.DataBaseService;
 import com.sda.group2.Helper;
 import com.sda.group2.hibernate.hql.Complaint;
 import com.sda.group2.hibernate.hql.users.Account;
@@ -8,7 +7,6 @@ import com.sda.group2.optioninterfaces.UserOption;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class CustomerService implements UserOption {
     private boolean back = false;
@@ -27,12 +25,12 @@ public class CustomerService implements UserOption {
         while (!back);
     }
 
-    private class GetListOfComplaints implements UserOption{
+    private class GetListOfComplaints implements UserOption {
 
         @Override
         public void invoke(Account account) {
             List<Complaint> complaints = Helper.getDataBaseService().getListOfComplaint();
-            for (Complaint c: complaints) {
+            for (Complaint c : complaints) {
                 System.out.println(c);
             }
         }
@@ -43,7 +41,7 @@ public class CustomerService implements UserOption {
         }
     }
 
-    private class RespondToComplaint implements UserOption{
+    private class RespondToComplaint implements UserOption {
 
         @Override
         public void invoke(Account account) {
@@ -60,7 +58,7 @@ public class CustomerService implements UserOption {
                 System.out.println("Answer: ");
                 String answer = Helper.getNextLine();
                 Helper.getDataBaseService().respondToComplaint(id, answer);
-            } catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 System.out.println("Wrong flight number!");
             }
         }

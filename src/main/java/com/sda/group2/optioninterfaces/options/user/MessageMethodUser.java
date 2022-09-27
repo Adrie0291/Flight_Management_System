@@ -1,4 +1,4 @@
-package com.sda.group2.optioninterfaces.options;
+package com.sda.group2.optioninterfaces.options.user;
 
 import com.sda.group2.DataBaseService;
 import com.sda.group2.controllers.MenuController;

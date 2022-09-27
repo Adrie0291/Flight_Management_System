@@ -39,7 +39,7 @@ public class Plane {
             System.out.println("You have got exception:");
             System.out.println(e.getMessage());
 
-        }catch (FlightMappingException e){
+        } catch (FlightMappingException e) {
             System.out.println("You have got exception:");
             System.out.println(e.getMessage());
             System.out.println(e.getLine());

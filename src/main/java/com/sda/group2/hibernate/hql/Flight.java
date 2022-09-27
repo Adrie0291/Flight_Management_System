@@ -30,7 +30,8 @@ public class Flight {
     @Column(name = "delay_minutes")
     private int delayMinutes;
 
-    public Flight() {}
+    public Flight() {
+    }
 
     public Flight(String flightNumber, String arrivalAirportId, String departureAirportId, LocalTime arrivalDateTime, LocalTime departureDateTime) {
         this.flightNumber = flightNumber;
@@ -51,7 +52,7 @@ public class Flight {
             System.out.println("You have got exception:");
             System.out.println(e.getMessage());
 
-        }catch (FlightMappingException e){
+        } catch (FlightMappingException e) {
             System.out.println("You have got exception:");
             System.out.println(e.getMessage());
             System.out.println(e.getLine());

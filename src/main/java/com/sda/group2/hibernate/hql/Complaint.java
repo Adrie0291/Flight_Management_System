@@ -87,11 +87,11 @@ public class Complaint {
     public String toString() {
         return
                 "id=" + id +
-                ", flightNumber= " + flightNumber + '\'' +
+                        ", flightNumber= " + flightNumber + '\'' +
                         " ticketNumber= " + ticketNumber + '\n' +
                         " text: " + text + '\n' +
                         " answer: " + answer + '\n' +
-                " sender= " + sender + '\'' +
-                " type= " + type;
+                        " sender= " + sender + '\'' +
+                        " type= " + type;
     }
 }

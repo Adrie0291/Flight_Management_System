@@ -2,10 +2,10 @@ package com.sda.group2.hibernate.hql.users;
 
 import com.sda.group2.optioninterfaces.UserOption;
 import com.sda.group2.optioninterfaces.options.assistant.CustomerService;
-import com.sda.group2.optioninterfaces.options.MessageMethodAssistant;
+import com.sda.group2.optioninterfaces.options.assistant.MessageMethodAssistant;
 import com.sda.group2.optioninterfaces.options.common.EditAccount;
-import com.sda.group2.optioninterfaces.options.FlightsFilteredPreview;
-import com.sda.group2.optioninterfaces.options.FlightsPreview;
+import com.sda.group2.optioninterfaces.options.assistant.FlightsFilteredPreview;
+import com.sda.group2.optioninterfaces.options.assistant.FlightsPreview;
 import com.sda.group2.optioninterfaces.options.common.Logout;
 
 import javax.persistence.DiscriminatorValue;

@@ -9,7 +9,6 @@ import com.sda.group2.optioninterfaces.UserOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class FileAComplaint implements UserOption {
     private boolean back = false;
@@ -39,7 +38,7 @@ public class FileAComplaint implements UserOption {
             String ticketNumber = Helper.getNextLine();
             System.out.println("Please describe your issue:");
             String message = Helper.getNextLine();
-            Complaint complaint = new Complaint(flightNumber,ticketNumber,message,account.getEmail(),ComplaintType.COMPLAINT);
+            Complaint complaint = new Complaint(flightNumber, ticketNumber, message, account.getEmail(), ComplaintType.COMPLAINT);
             Helper.getDataBaseService().sendAComplaint(complaint);
         }
 
@@ -60,7 +59,7 @@ public class FileAComplaint implements UserOption {
             String ticketNumber = Helper.getNextLine();
             System.out.println("Please describe your issue:");
             String message = Helper.getNextLine();
-            Complaint complaint = new Complaint(flightNumber,ticketNumber,message,account.getEmail(),ComplaintType.REFUND);
+            Complaint complaint = new Complaint(flightNumber, ticketNumber, message, account.getEmail(), ComplaintType.REFUND);
             Helper.getDataBaseService().sendAComplaint(complaint);
         }
 
@@ -70,13 +69,13 @@ public class FileAComplaint implements UserOption {
         }
     }
 
-    private class ViewYourIssues implements UserOption{
+    private class ViewYourIssues implements UserOption {
 
         @Override
         public void invoke(Account account) {
             List<Complaint> complaints = Helper.getDataBaseService().getListOfComplaint();
-            for (Complaint c: complaints) {
-                if (Objects.equals(c.getSender(), account.getEmail())){
+            for (Complaint c : complaints) {
+                if (Objects.equals(c.getSender(), account.getEmail())) {
                     System.out.println(c);
                 }
             }

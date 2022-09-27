@@ -1,7 +1,7 @@
 package com.sda.group2.hibernate.hql.users;
 
 import com.sda.group2.optioninterfaces.UserOption;
-import com.sda.group2.optioninterfaces.options.MessageMethodUser;
+import com.sda.group2.optioninterfaces.options.user.MessageMethodUser;
 import com.sda.group2.optioninterfaces.options.common.EditAccount;
 import com.sda.group2.optioninterfaces.options.common.Logout;
 import com.sda.group2.optioninterfaces.options.user.FileAComplaint;

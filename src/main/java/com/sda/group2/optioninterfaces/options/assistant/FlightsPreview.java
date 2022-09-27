@@ -1,24 +1,25 @@
-package com.sda.group2.optioninterfaces.options;
+package com.sda.group2.optioninterfaces.options.assistant;
 
 import com.sda.group2.DataBaseService;
-import com.sda.group2.Helper;
 import com.sda.group2.hibernate.hql.Flight;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.optioninterfaces.UserOption;
 
 import java.util.List;
 
-public class FlightsFilteredPreview implements UserOption {
+public class FlightsPreview implements UserOption {
+
+
     @Override
     public void invoke(Account account) {
-        System.out.println("Filter arrival flights by: ");
-        String arrival = Helper.getNextLine();
-
-        System.out.println("Filter departure flights by: ");
-        String departure = Helper.getNextLine();
         try {
+            //Scanner scanner = new Scanner(System.in);
+            //String filename = scanner.nextLine();
+
+            // title
+            System.out.println("Show all flights: ");
             DataBaseService dtb = new DataBaseService();
-            List<Flight> flights = dtb.showFilteredFlights(arrival, departure);
+            List<Flight> flights = dtb.showFlights();
 
             for (Flight flight : flights) {
                 System.out.println(flight);
@@ -30,6 +31,8 @@ public class FlightsFilteredPreview implements UserOption {
 
     @Override
     public String getMethodName() {
-        return "Filter flights option";
+        return "Flights preview option";
     }
+
+
 }
