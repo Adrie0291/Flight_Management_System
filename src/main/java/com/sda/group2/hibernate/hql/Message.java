@@ -22,16 +22,19 @@ public class Message {
     @Column(name = "receiver_id")
     private int receiver_id;
 
+    public Message() {
+    }
+
+    public Message(String text) {
+        this.question = text;
+    }
+
     public void setAnswer(String answer) {
         this.answer = answer;
     }
 
     public void setReceiver_id(int receiver_id) {
         this.receiver_id = receiver_id;
-    }
-
-    public Message(String text) {
-        this.question = text;
     }
 
     public Account getAccount() {
