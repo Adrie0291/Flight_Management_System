@@ -1,5 +1,6 @@
-package com.sda.group2;
+package com.sda.group2.controllers;
 
+import com.sda.group2.Helper;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.Admin;
 import com.sda.group2.hibernate.hql.users.StartMenuUser;

@@ -1,25 +1,26 @@
-package com.sda.group2.interfaces.options;
+package com.sda.group2.optioninterfaces.options.admin;
 
-import com.sda.group2.LoginRegisterService;
+import com.sda.group2.Helper;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.Assistant;
-import com.sda.group2.interfaces.UserOption;
-
-import java.util.Scanner;
+import com.sda.group2.optioninterfaces.UserOption;
 
 public class AssistantCreation implements UserOption {
     @Override
     public void invoke(Account account) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter e-mail: ");
-        String email = scanner.nextLine();
+        String email = Helper.getNextLine();
+
         System.out.println("Enter password: ");
-        String password = scanner.nextLine();
+        String password = Helper.getNextLine();
+
         System.out.println("Enter name: ");
-        String name = scanner.nextLine();
+        String name = Helper.getNextLine();
+
         System.out.println("Enter lastname: ");
-        String lastname = scanner.nextLine();
-        new LoginRegisterService().createNewAccount(new Assistant(email, password, name, lastname));
+        String lastname = Helper.getNextLine();
+
+        Helper.getLrs().createNewAccount(new Assistant(email, password, name, lastname));
     }
 
     @Override

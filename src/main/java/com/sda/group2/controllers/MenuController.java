@@ -1,8 +1,9 @@
-package com.sda.group2;
+package com.sda.group2.controllers;
 
+import com.sda.group2.Helper;
 import com.sda.group2.exceptions.BuildMenuClassInstanceNotFoundException;
 import com.sda.group2.hibernate.hql.users.*;
-import com.sda.group2.interfaces.UserOption;
+import com.sda.group2.optioninterfaces.UserOption;
 
 import java.util.List;
 

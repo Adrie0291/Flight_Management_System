@@ -1,8 +1,8 @@
-package com.sda.group2.interfaces.options;
+package com.sda.group2.optioninterfaces.options.assistant;
 
 import com.sda.group2.DataBaseService;
 import com.sda.group2.hibernate.hql.users.Account;
-import com.sda.group2.interfaces.UserOption;
+import com.sda.group2.optioninterfaces.UserOption;
 
 public class ViewComplaints implements UserOption {
     @Override

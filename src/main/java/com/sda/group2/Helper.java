@@ -1,5 +1,8 @@
 package com.sda.group2;
 
+import com.sda.group2.controllers.LoginRegisterService;
+import com.sda.group2.controllers.MenuController;
+
 import java.util.Scanner;
 
 public class Helper {

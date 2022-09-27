@@ -1,10 +1,10 @@
-package com.sda.group2.interfaces.options;
+package com.sda.group2.optioninterfaces.options.user;
 
 import com.sda.group2.Helper;
 import com.sda.group2.hibernate.hql.Complaint;
 import com.sda.group2.hibernate.hql.ComplaintType;
 import com.sda.group2.hibernate.hql.users.Account;
-import com.sda.group2.interfaces.UserOption;
+import com.sda.group2.optioninterfaces.UserOption;
 
 import java.util.ArrayList;
 import java.util.List;

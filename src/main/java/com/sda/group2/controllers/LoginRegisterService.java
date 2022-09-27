@@ -1,4 +1,4 @@
-package com.sda.group2;
+package com.sda.group2.controllers;
 
 import com.sda.group2.hibernate.HibernateUtil;
 

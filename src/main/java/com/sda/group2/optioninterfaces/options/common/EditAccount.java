@@ -1,9 +1,9 @@
-package com.sda.group2.interfaces.options;
+package com.sda.group2.optioninterfaces.options.common;
 
 import com.sda.group2.DataBaseService;
-import com.sda.group2.MenuController;
+import com.sda.group2.controllers.MenuController;
 import com.sda.group2.hibernate.hql.users.Account;
-import com.sda.group2.interfaces.UserOption;
+import com.sda.group2.optioninterfaces.UserOption;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
 package com.sda.group2.hibernate.hql.users;
 
-import com.sda.group2.interfaces.UserOption;
-import com.sda.group2.interfaces.options.Exit;
-import com.sda.group2.interfaces.options.Login;
-import com.sda.group2.interfaces.options.Register;
+import com.sda.group2.optioninterfaces.UserOption;
+import com.sda.group2.optioninterfaces.options.startmenu.Exit;
+import com.sda.group2.optioninterfaces.options.startmenu.Login;
+import com.sda.group2.optioninterfaces.options.startmenu.Register;
 
 import java.util.ArrayList;
 import java.util.List;

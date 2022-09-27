@@ -1,5 +1,9 @@
 package com.sda.group2;
 
+import com.sda.group2.controllers.AirportController;
+import com.sda.group2.controllers.Controller;
+import com.sda.group2.controllers.FlightController;
+import com.sda.group2.controllers.PlaneController;
 import com.sda.group2.hibernate.HibernateUtil;
 import com.sda.group2.hibernate.hql.Airport;
 import com.sda.group2.hibernate.hql.Flight;

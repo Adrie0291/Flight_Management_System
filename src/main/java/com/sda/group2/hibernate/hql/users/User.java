@@ -1,7 +1,10 @@
 package com.sda.group2.hibernate.hql.users;
 
-import com.sda.group2.interfaces.UserOption;
-import com.sda.group2.interfaces.options.*;
+import com.sda.group2.optioninterfaces.UserOption;
+import com.sda.group2.optioninterfaces.options.common.EditAccount;
+import com.sda.group2.optioninterfaces.options.common.Logout;
+import com.sda.group2.optioninterfaces.options.user.FileAComplaint;
+import com.sda.group2.optioninterfaces.options.user.Wallet;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.sda.group2.interfaces;
+package com.sda.group2.optioninterfaces;
 
 import com.sda.group2.hibernate.hql.users.Account;
 

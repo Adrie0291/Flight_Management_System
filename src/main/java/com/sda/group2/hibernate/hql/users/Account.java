@@ -1,6 +1,6 @@
 package com.sda.group2.hibernate.hql.users;
 
-import com.sda.group2.interfaces.UserOption;
+import com.sda.group2.optioninterfaces.UserOption;
 
 import javax.persistence.*;
 import java.util.List;

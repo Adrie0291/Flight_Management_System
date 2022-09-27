@@ -1,9 +1,9 @@
-package com.sda.group2.interfaces.options;
+package com.sda.group2.optioninterfaces.options.startmenu;
 
-import com.sda.group2.Controller;
+import com.sda.group2.controllers.Controller;
 import com.sda.group2.Helper;
 import com.sda.group2.hibernate.hql.users.Account;
-import com.sda.group2.interfaces.UserOption;
+import com.sda.group2.optioninterfaces.UserOption;
 
 public class Login implements UserOption {
 

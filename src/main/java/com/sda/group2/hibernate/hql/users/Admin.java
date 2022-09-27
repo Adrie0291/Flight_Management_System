@@ -1,9 +1,9 @@
 package com.sda.group2.hibernate.hql.users;
 
-import com.sda.group2.interfaces.UserOption;
-import com.sda.group2.interfaces.options.AdminFileLoad;
-import com.sda.group2.interfaces.options.AssistantCreation;
-import com.sda.group2.interfaces.options.Logout;
+import com.sda.group2.optioninterfaces.UserOption;
+import com.sda.group2.optioninterfaces.options.admin.AdminFileLoad;
+import com.sda.group2.optioninterfaces.options.admin.AssistantCreation;
+import com.sda.group2.optioninterfaces.options.common.Logout;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

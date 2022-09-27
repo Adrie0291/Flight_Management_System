@@ -1,36 +1,33 @@
-package com.sda.group2;
+package com.sda.group2.controllers;
 
 import com.sda.group2.hibernate.HibernateUtil;
-import com.sda.group2.hibernate.hql.Airport;
 import com.sda.group2.hibernate.hql.Flight;
 import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class AirportController {
-
-    private String path = "src\\main\\resources\\";
-    private String filename = "airports.txt";
+public class FlightController {
+    private final String path = "src\\main\\resources\\";
+    private String filename = "flights.txt";
     private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private final EntityManager entityManager = sessionFactory.createEntityManager();
 
-    public AirportController(String filename) {
+    public FlightController(String filename) {
         this.filename = filename;
     }
 
-    public void loadAirportsIntoDb(List<Airport> airports) {
+    public void loadFlightsIntoDb(List<Flight> flights) {
         entityManager.getTransaction().begin();
-        for (Airport airport : airports) {
-            entityManager.persist(airport);
+        for (Flight flight : flights) {
+            entityManager.persist(flight);
         }
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println("Airport database is up-to-date.");
+        System.out.println("Flight database is up-to-date.");
     }
 
     public String getFilename() {
-        return path + filename;
+        return path+filename;
     }
-
 }

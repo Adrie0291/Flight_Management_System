@@ -9,7 +9,6 @@ import com.sda.group2.hibernate.hql.Plane;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +16,9 @@ import java.util.Scanner;
 
 public class FileInput {
 
-
     public List<Flight> readFlights(String filename) throws FlightMappingException, FileDBNotConnectionException {
         List<Flight> flightsList = new ArrayList<>();
-        File file = null;
-
+        File file;
 
         try {
             //"src\\main\\resources\\flights.txt"
@@ -36,7 +33,6 @@ public class FileInput {
             System.out.println("File not found!");
             e.printStackTrace();
         }
-
         return flightsList;
     }
 
@@ -50,10 +46,8 @@ public class FileInput {
             LocalTime arrivalTime = LocalTime.parse(elements[3].trim());
             LocalTime departureTime = LocalTime.parse(elements[4].trim());
 
-            Flight flight = new Flight(flightNumber, arrivalAirportId, departureAirportId, arrivalTime, departureTime);
-            return flight;
+            return new Flight(flightNumber, arrivalAirportId, departureAirportId, arrivalTime, departureTime);
         } catch (Exception exception) {
-            //throw new Exception("Niepoprawny format pliku!!!! dla linii: " + line);
             throw new FlightMappingException("Bad file format for line: " + line, line);
         }
     }
@@ -63,7 +57,6 @@ public class FileInput {
     public List<Airport> readAirports(String filename) throws FlightMappingException, FileDBNotConnectionException {
         List<Airport> airportsList = new ArrayList<>();
         File file = null;
-
 
         try {
             //"src\\main\\resources\\airports.txt"
@@ -78,7 +71,6 @@ public class FileInput {
             System.out.println("File not found!");
             e.printStackTrace();
         }
-
         return airportsList;
     }
 
@@ -88,18 +80,12 @@ public class FileInput {
             String airportCountry = elements[0].trim();
             String airportShortcut = elements[1].trim();
 
-            Airport airport = new Airport(airportCountry, airportShortcut);
-
-            return airport;
-
+            return new Airport(airportCountry, airportShortcut);
         } catch (Exception exception) {
             //throw new Exception("Niepoprawny format pliku!!!! dla linii: " + line);
             throw new FlightMappingException("Bad file format for line: " + line, line);
         }
-
     }
-
-
 
 
     // Planes
@@ -107,12 +93,10 @@ public class FileInput {
 
     public List<Plane> readPlanes(String filename) throws FlightMappingException, FileDBNotConnectionException {
         List<Plane> planesList = new ArrayList<>();
-        File file = null;
+        File file = new File(filename);
 
-
+        //"src\\main\\resources\\planes.txt"
         try {
-            //"src\\main\\resources\\planes.txt"
-            file = new File(filename);
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -123,7 +107,6 @@ public class FileInput {
             System.out.println("File not found!");
             e.printStackTrace();
         }
-
         return planesList;
     }
 
@@ -135,14 +118,10 @@ public class FileInput {
             String planeCompany = elements[1].trim();
             int planeSeats = Integer.parseInt(elements[2].trim());
 
-            Plane plane = new Plane(planeType, planeCompany, planeSeats);
-
-            return plane;
-
+            return new Plane(planeType, planeCompany, planeSeats);
         } catch (Exception exception) {
             //throw new Exception("Niepoprawny format pliku!!!! dla linii: " + line);
             throw new FlightMappingException("Bad file format for line: " + line, line);
         }
-
     }
 }
