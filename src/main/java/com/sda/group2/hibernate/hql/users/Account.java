@@ -1,5 +1,6 @@
 package com.sda.group2.hibernate.hql.users;
 
+import com.sda.group2.hibernate.hql.Message;
 import com.sda.group2.optioninterfaces.UserOption;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.util.List;
         discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id", nullable = false)
     private int accountId;
     @Column(unique = true, nullable = false)
@@ -24,6 +25,9 @@ public abstract class Account {
     private String lastName;
     @Column
     private double wallet;
+
+    @OneToMany(mappedBy = "account")
+    private List<Message> message;
 
     public Account() {
     }
@@ -68,4 +72,14 @@ public abstract class Account {
     }
 
     public abstract List<UserOption> getOptions();
+
+    @Override
+    public String toString() {
+        return
+                "email: '" + email + '\'' +
+                        ", name: '" + firstName + '\'' +
+                        ", last name: '" + lastName + '\'';
+    }
+
 }
+
