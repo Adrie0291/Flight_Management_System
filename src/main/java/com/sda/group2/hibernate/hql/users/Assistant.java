@@ -1,6 +1,7 @@
 package com.sda.group2.hibernate.hql.users;
 
 import com.sda.group2.optioninterfaces.UserOption;
+import com.sda.group2.optioninterfaces.options.MessageMethodAssistant;
 import com.sda.group2.optioninterfaces.options.common.EditAccount;
 import com.sda.group2.optioninterfaces.options.FlightsFilteredPreview;
 import com.sda.group2.optioninterfaces.options.FlightsPreview;
@@ -31,6 +32,7 @@ public class Assistant extends Account {
         list.add(new FlightsPreview());
         list.add(new FlightsFilteredPreview());
         list.add(new Logout());
+        list.add(new MessageMethodAssistant());
         return list;
     }
 }

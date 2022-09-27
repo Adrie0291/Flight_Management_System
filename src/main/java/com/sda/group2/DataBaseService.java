@@ -3,6 +3,7 @@ package com.sda.group2;
 import com.sda.group2.hibernate.HibernateUtil;
 import com.sda.group2.hibernate.hql.Flight;
 import com.sda.group2.hibernate.hql.Complaint;
+import com.sda.group2.hibernate.hql.Message;
 import com.sda.group2.hibernate.hql.users.Account;
 
 import javax.persistence.EntityManager;
@@ -59,14 +60,14 @@ public class DataBaseService {
         entm.getTransaction().commit();
     }
 
-    public void sendAComplaint(Complaint complaint){
+    public void sendAComplaint(Complaint complaint) {
         entm.getTransaction().begin();
         entm.persist(complaint);
         System.out.println("Thank you!");
         entm.getTransaction().commit();
     }
 
-    public void getListOfComplaint(){
+    public void getListOfComplaint() {
         entm.getTransaction().begin();
         System.out.println(entm.createQuery("FROM Complaint", Complaint.class).getResultList());
         entm.getTransaction().commit();
@@ -88,6 +89,35 @@ public class DataBaseService {
         if (flights.isEmpty())
             return null;
         return flights;
+
+    }
+
+    public void SendMessage(Account account, Message message) {
+        entm.getTransaction().begin();
+        entm.persist(message);
+        message.setAccount(account);
+        entm.getTransaction().commit();
+    }
+
+    public void receiveMessage(int number) {
+        List<Message> messages = entm.createQuery("from Message WHERE sender_id = :param", Message.class)
+                .setParameter("param", number)
+                .getResultList();
+        messages.forEach(System.out::println);
+    }
+
+    public void receiveMessage() {
+        List<Message> messages = entm.createQuery("from Message ", Message.class)
+                .getResultList();
+        messages.forEach(System.out::println);
+    }
+
+    public void answerToMessage(Account account, int messageId, String answer) {
+        entm.getTransaction().begin();
+        Message messageFromDB = entm.find(Message.class, messageId);
+        messageFromDB.setAnswer(answer);
+        messageFromDB.setReceiver_id(account.getAccountId());
+        entm.getTransaction().commit();
+
     }
 }
-
