@@ -1,6 +1,7 @@
 package com.sda.group2.optioninterfaces.options.startmenu;
 
 import com.sda.group2.Helper;
+import com.sda.group2.controllers.LoginRegisterService;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.hibernate.hql.users.User;
 import com.sda.group2.optioninterfaces.UserOption;
@@ -8,19 +9,28 @@ import com.sda.group2.optioninterfaces.UserOption;
 public class Register implements UserOption {
     @Override
     public void invoke(Account account) {
-        System.out.println("Name:");
-        String firstName = Helper.getNextLine();
+        String firstName, lastName, email, password;
+        do {
+            System.out.println("First name:");
+            firstName = Helper.getNextLine();
+        } while (firstName.isEmpty());
 
-        System.out.println("Last name:");
-        String lastname = Helper.getNextLine();
+        do {
+            System.out.println("Last name:");
+            lastName = Helper.getNextLine();
+        } while (lastName.isEmpty());
 
-        System.out.println("Email:");
-        String email = Helper.getNextLine();
+        do {
+            System.out.println("E-mail:");
+            email = Helper.getNextLine();
+        } while (Helper.getLrs().checkEmail(email));
 
-        System.out.println("Password:");
-        String password = Helper.getNextLine();
+        do {
+            System.out.println("Password:");
+            password = Helper.getNextLine();
+        } while (password.isEmpty());
 
-        Helper.getLrs().createNewAccount(new User(firstName, lastname, email, password));
+        Helper.getLrs().createNewAccount(new User(firstName, lastName, email, password));
     }
 
     @Override
