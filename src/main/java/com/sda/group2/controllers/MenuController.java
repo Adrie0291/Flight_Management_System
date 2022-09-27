@@ -42,8 +42,10 @@ public class MenuController {
 
     private void optionChoice(Account account, List<UserOption> list) {
         int choice = Helper.choiceValidation();
-        if (choice <= list.size()) {
+        if (choice <= list.size() && choice > 0) {
             list.get(choice - 1).invoke(account);
+        } else {
+            System.out.println("Try again.");
         }
     }
 }
