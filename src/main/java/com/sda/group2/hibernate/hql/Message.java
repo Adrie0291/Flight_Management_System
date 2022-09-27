@@ -22,9 +22,6 @@ public class Message {
     @Column(name = "receiver_id")
     private int receiver_id;
 
-    public Message() {
-    }
-
     public Message(String text) {
         this.question = text;
     }

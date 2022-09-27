@@ -31,8 +31,8 @@ public class Assistant extends Account {
         list.add(new ViewComplaints());
         list.add(new FlightsPreview());
         list.add(new FlightsFilteredPreview());
-        list.add(new Logout());
         list.add(new MessageMethodAssistant());
+        list.add(new Logout());
         return list;
     }
 }

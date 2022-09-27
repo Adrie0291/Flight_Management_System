@@ -107,7 +107,6 @@ public class DataBaseService {
             return true;
         }
     }
-}
 
     public void receiveMessage(int number) {
         List<Message> messages = entm.createQuery("from Message WHERE sender_id = :param", Message.class)

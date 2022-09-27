@@ -28,8 +28,8 @@ public class User extends Account {
         list.add(new EditAccount());
         list.add(new Wallet());
         list.add(new FileAComplaint());
-        list.add(new Logout());
         list.add(new MessageMethodUser());
+        list.add(new Logout());
         return list;
     }
 }
