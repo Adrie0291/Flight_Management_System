@@ -18,6 +18,7 @@ public class Launcher {
         planeController.loadPlanesIntoDb(Plane.loadPlanesFromFileIntoArray(planeController.getFilename()));
 
         Controller controller = new Controller();
+
         controller.start();
         HibernateUtil.shutdown();
     }
