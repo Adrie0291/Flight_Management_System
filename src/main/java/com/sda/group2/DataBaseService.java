@@ -66,10 +66,11 @@ public class DataBaseService {
         entm.getTransaction().commit();
     }
 
-    public void getListOfComplaint(){
+    public List<Complaint> getListOfComplaint(){
         entm.getTransaction().begin();
-        System.out.println(entm.createQuery("FROM Complaint", Complaint.class).getResultList());
+        List<Complaint> complaints = entm.createQuery("FROM Complaint", Complaint.class).getResultList();
         entm.getTransaction().commit();
+        return complaints;
     }
 
     public List<Flight> showFlights() {
@@ -89,5 +90,15 @@ public class DataBaseService {
             return null;
         return flights;
     }
+
+    public void respondToComplaint(long flightNumber, String answer) {
+        entm.getTransaction().begin();
+        Complaint complaintFromDB = entm.find(Complaint.class, flightNumber);
+        complaintFromDB.setAnswer(answer);
+        System.out.println("Answer successfully send");
+        entm.merge(complaintFromDB);
+        entm.getTransaction().commit();
+    }
+
 }
 
