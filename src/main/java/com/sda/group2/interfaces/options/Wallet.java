@@ -1,7 +1,7 @@
 package com.sda.group2.interfaces.options;
 
-import com.sda.group2.Controller;
 import com.sda.group2.DataBaseService;
+import com.sda.group2.Helper;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.interfaces.UserOption;
 
@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Wallet implements UserOption {
 
     private boolean back = false;
+
     @Override
     public void invoke(Account account) {
         do {
@@ -21,7 +22,7 @@ public class Wallet implements UserOption {
             list.add(new Wallet.Withdraw());
             list.add(new Wallet.Back());
 
-            Controller.mainMenuCreate(account, list);
+            Helper.getMenuController().buildInteractiveMenu(account, list);
         }
         while (!back);
     }

@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Helper {
     private static final Scanner scanner = new Scanner(System.in);
     private static final LoginRegisterService lrs = new LoginRegisterService();
+    private static final DataBaseService dataBaseService = new DataBaseService();
+    private static final MenuController menuController = new MenuController();
 
     public static int choiceValidation() {
         int choice;
@@ -27,5 +29,13 @@ public class Helper {
 
     public static LoginRegisterService getLrs() {
         return lrs;
+    }
+
+    public static DataBaseService getDataBaseService() {
+        return dataBaseService;
+    }
+
+    public static MenuController getMenuController() {
+        return menuController;
     }
 }

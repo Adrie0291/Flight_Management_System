@@ -1,7 +1,6 @@
 package com.sda.group2.interfaces.options;
 
-import com.sda.group2.Controller;
-import com.sda.group2.DataBaseService;
+import com.sda.group2.Helper;
 import com.sda.group2.hibernate.hql.Complaint;
 import com.sda.group2.hibernate.hql.ComplaintType;
 import com.sda.group2.hibernate.hql.users.Account;
@@ -13,7 +12,6 @@ import java.util.Scanner;
 
 public class FileAComplaint implements UserOption {
     private boolean back = false;
-    private DataBaseService dataBaseService = new DataBaseService();
 
     @Override
     public void invoke(Account account) {
@@ -23,20 +21,20 @@ public class FileAComplaint implements UserOption {
             list.add(new askForRefund());
             list.add(new Back());
 
-            Controller.mainMenuCreate(account, list);
+            Helper.getMenuController().buildInteractiveMenu(account, list);
         }
         while (!back);
     }
 
 
-    private class fileAComplain implements UserOption{
+    private class fileAComplain implements UserOption {
 
         @Override
         public void invoke(Account account) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Please describe your issue, remember to provide your flight number!");
             Complaint complaint = new Complaint(scanner.nextLine(), account.getEmail(), ComplaintType.COMPLAINT);
-            dataBaseService.sendAComplaint(complaint);
+            Helper.getDataBaseService().sendAComplaint(complaint);
         }
 
         @Override
@@ -45,14 +43,14 @@ public class FileAComplaint implements UserOption {
         }
     }
 
-    private class askForRefund implements UserOption{
+    private class askForRefund implements UserOption {
 
         @Override
         public void invoke(Account account) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Provide flight number, date and reason");
-            Complaint complaint = new Complaint(scanner.nextLine(),account.getEmail(),ComplaintType.REFUND);
-            dataBaseService.sendAComplaint(complaint);
+            Complaint complaint = new Complaint(scanner.nextLine(), account.getEmail(), ComplaintType.REFUND);
+            Helper.getDataBaseService().sendAComplaint(complaint);
         }
 
         @Override
@@ -67,6 +65,7 @@ public class FileAComplaint implements UserOption {
         public void invoke(Account account) {
             back = !back;
         }
+
         @Override
         public String getMethodName() {
             return "Back";

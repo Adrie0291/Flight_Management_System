@@ -63,5 +63,9 @@ public abstract class Account {
         this.email = email;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public abstract List<UserOption> getOptions();
 }
