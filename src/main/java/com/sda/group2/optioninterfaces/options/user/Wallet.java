@@ -35,8 +35,7 @@ public class Wallet implements UserOption {
     private class Balance implements UserOption {
         @Override
         public void invoke(Account account) {
-            DataBaseService dtb = new DataBaseService();
-            dtb.showWallet(account);
+            Helper.getDataBaseService().showWallet(account);
         }
 
         @Override
@@ -50,17 +49,22 @@ public class Wallet implements UserOption {
         public void invoke(Account account) {
             System.out.println("Amount to deposit: ");
             Scanner scanner = new Scanner(System.in);
-            double money = scanner.nextDouble() + account.getWallet(); //todo podmienić na metodę pobierającą tylko double
-            if (money > 100000) {
-                System.out.println("Maximum balance is 100000 PLN!\nOperation cancelled!");
-            } else if (money < 0) {
-                System.out.println("You cannot deposit negative value!\nOperation cancelled!");
-            } else {
-                DataBaseService dtb = new DataBaseService();
-
-                dtb.setBalance(account, money);
-                System.out.println("Success!");
-            }
+            do {
+                if (scanner.hasNextDouble()) {
+                    double money = scanner.nextDouble() + account.getWallet();
+                    if (money > 100000) {
+                        System.out.println("Maximum balance is 100000 PLN!\nOperation cancelled!");
+                    } else if (money < 0) {
+                        System.out.println("You cannot deposit negative value!\nOperation cancelled!");
+                    } else {
+                        Helper.getDataBaseService().setBalance(account, money);
+                        System.out.println("Success!");
+                    }
+                    break;
+                } else {
+                    scanner.nextLine();
+                }
+            } while (true);
         }
 
         @Override
@@ -74,15 +78,20 @@ public class Wallet implements UserOption {
         public void invoke(Account account) {
             System.out.println("Amount to withdraw: ");
             Scanner scanner = new Scanner(System.in);
-            double money = account.getWallet() - scanner.nextDouble(); //todo podmienić na metodę pobierającą tylko double
-            if (money < 0) {
-                System.out.println("Not enough funds!\nOperation cancelled!");
-            } else {
-                DataBaseService dtb = new DataBaseService();
-
-                dtb.setBalance(account, money);
-                System.out.println("Success!");
-            }
+            do {
+                if (scanner.hasNextDouble()) {
+                    double money = account.getWallet() - scanner.nextDouble();
+                    if (money < 0) {
+                        System.out.println("Not enough funds!\nOperation cancelled!");
+                    } else {
+                        Helper.getDataBaseService().setBalance(account, money);
+                        System.out.println("Success!");
+                    }
+                    break;
+                } else {
+                    scanner.nextLine();
+                }
+            } while (true);
         }
 
         @Override
