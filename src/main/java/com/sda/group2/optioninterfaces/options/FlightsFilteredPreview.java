@@ -11,9 +11,6 @@ import java.util.List;
 public class FlightsFilteredPreview implements UserOption {
     @Override
     public void invoke(Account account) {
-        //String filename = scanner.nextLine();
-
-        // title
         System.out.println("Filter arrival flights by: ");
         String arrival = Helper.getNextLine();
 

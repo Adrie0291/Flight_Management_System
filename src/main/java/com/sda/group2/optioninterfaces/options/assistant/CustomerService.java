@@ -18,9 +18,9 @@ public class CustomerService implements UserOption {
         do {
             List<UserOption> list = new ArrayList<>();
 
-            list.add(new Back());
             list.add(new GetListOfComplaints());
             list.add(new RespondToComplaint());
+            list.add(new Back());
 
             Helper.getMenuController().buildInteractiveMenu(account, list);
         }
