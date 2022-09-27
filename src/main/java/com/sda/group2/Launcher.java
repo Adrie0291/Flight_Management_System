@@ -1,5 +1,6 @@
 package com.sda.group2;
 
+import com.sda.group2.hibernate.HibernateUtil;
 import com.sda.group2.hibernate.hql.Flight;
 
 public class Launcher {
@@ -13,5 +14,6 @@ public class Launcher {
         Controller controller = new Controller();
 
         controller.start();
+        HibernateUtil.shutdown();
     }
 }

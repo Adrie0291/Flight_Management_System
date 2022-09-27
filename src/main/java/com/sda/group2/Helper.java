@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Helper {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final LoginRegisterService lrs = new LoginRegisterService();
 
     public static int choiceValidation() {
         int choice;
@@ -18,5 +19,13 @@ public class Helper {
             }
         } while (true);
         return choice;
+    }
+
+    public static String getNextLine() {
+        return scanner.nextLine();
+    }
+
+    public static LoginRegisterService getLrs() {
+        return lrs;
     }
 }

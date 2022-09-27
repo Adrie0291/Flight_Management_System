@@ -24,7 +24,7 @@ public class EditAccount implements UserOption {
             list.add(new Back());
 
             MenuController menuController = new MenuController();
-            menuController.menuInteractionBuilder(account, list);
+            menuController.buildInteractiveMenu(account, list);
         }
         while (!back);
     }

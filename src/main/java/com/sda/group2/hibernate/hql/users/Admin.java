@@ -20,11 +20,11 @@ public class Admin extends Account {
         super(email, password, firstName, lastName);
     }
 
+    @Override
     public List<UserOption> getOptions() {
-        List<UserOption> list = new ArrayList();
+        List<UserOption> list = new ArrayList<>();
         list.add(new AssistantCreation());
         list.add(new Logout());
-        //TODO
         return list;
     }
 }

@@ -21,14 +21,13 @@ public class User extends Account {
         super(firstName, lastName, email, password);
     }
 
+    @Override
     public List<UserOption> getOptions() {
-        List<UserOption> list = new ArrayList();
+        List<UserOption> list = new ArrayList<>();
         list.add(new EditAccount());
         list.add(new ShowWallet());
         list.add(new AddMoney());
         list.add(new Logout());
-
-        //TODO
         return list;
     }
 }
