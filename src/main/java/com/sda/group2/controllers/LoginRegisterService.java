@@ -33,7 +33,7 @@ public class LoginRegisterService {
             entityManager.persist(account);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println("Account with given email address already exist.");
+            //Try catch only for admin creation in case of "update" setup
         }
     }
 

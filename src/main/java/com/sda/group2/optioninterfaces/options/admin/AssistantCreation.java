@@ -8,19 +8,28 @@ import com.sda.group2.optioninterfaces.UserOption;
 public class AssistantCreation implements UserOption {
     @Override
     public void invoke(Account account) {
-        System.out.println("Enter e-mail: ");
-        String email = Helper.getNextLine();
+        String firstName, lastName, email, password;
+        do {
+            System.out.println("First name:");
+            firstName = Helper.getNextLine();
+        } while (firstName.isEmpty());
 
-        System.out.println("Enter password: ");
-        String password = Helper.getNextLine();
+        do {
+            System.out.println("Last name:");
+            lastName = Helper.getNextLine();
+        } while (lastName.isEmpty());
 
-        System.out.println("Enter name: ");
-        String name = Helper.getNextLine();
+        do {
+            System.out.println("E-mail:");
+            email = Helper.getNextLine();
+        } while (Helper.getLrs().checkEmail(email));
 
-        System.out.println("Enter lastname: ");
-        String lastname = Helper.getNextLine();
+        do {
+            System.out.println("Password:");
+            password = Helper.getNextLine();
+        } while (password.isEmpty());
 
-        Helper.getLrs().createNewAccount(new Assistant(email, password, name, lastname));
+        Helper.getLrs().createNewAccount(new Assistant(email, password, firstName, lastName));
     }
 
     @Override

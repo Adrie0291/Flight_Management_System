@@ -11,7 +11,7 @@ public class Register implements UserOption {
     public void invoke(Account account) {
         String firstName, lastName, email, password;
         do {
-            System.out.println("Name:");
+            System.out.println("First name:");
             firstName = Helper.getNextLine();
         } while (firstName.isEmpty());
 
@@ -21,7 +21,7 @@ public class Register implements UserOption {
         } while (lastName.isEmpty());
 
         do {
-            System.out.println("Email:");
+            System.out.println("E-mail:");
             email = Helper.getNextLine();
         } while (Helper.getLrs().checkEmail(email));
 
