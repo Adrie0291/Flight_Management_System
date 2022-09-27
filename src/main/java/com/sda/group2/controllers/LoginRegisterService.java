@@ -1,5 +1,6 @@
 package com.sda.group2.controllers;
 
+import com.sda.group2.Helper;
 import com.sda.group2.hibernate.HibernateUtil;
 
 import com.sda.group2.hibernate.hql.users.Account;
@@ -33,6 +34,15 @@ public class LoginRegisterService {
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Account with given email address already exist.");
+        }
+    }
+
+    public boolean checkEmail(String email) {
+        if (email.isEmpty() || !email.matches("\\b.+[@]\\w+[.]\\w+\\b")) {
+            System.out.println("Incorrect email!");
+            return true;
+        } else {
+            return Helper.getDataBaseService().isTakenEmail(email);
         }
     }
 }

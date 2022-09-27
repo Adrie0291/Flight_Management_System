@@ -1,6 +1,7 @@
 package com.sda.group2.optioninterfaces.options.common;
 
 import com.sda.group2.DataBaseService;
+import com.sda.group2.Helper;
 import com.sda.group2.controllers.MenuController;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.optioninterfaces.UserOption;
@@ -75,7 +76,6 @@ public class EditAccount implements UserOption {
         }
     }
 
-    //tutaj
     @Override
     public String getMethodName() {
         return "Change account details";
@@ -91,13 +91,11 @@ public class EditAccount implements UserOption {
             do {
                 if (sc.hasNextLine()) {
                     String newEmail = sc.nextLine();
-                    if (newEmail.matches("\\b.+[@]\\w+[.]\\w+\\b")) {
-                        DataBaseService dtb = new DataBaseService();
-                        dtb.changeEmail(newEmail, account.getAccountId());
+                    if (!Helper.getLrs().checkEmail(newEmail)) {
+                        Helper.getDataBaseService().changeEmail(newEmail, account.getAccountId());
                         break;
-                    } else {
-                        System.out.println("Incorrect email structure!");
                     }
+                    System.out.println("Enter new email again!");
                 }
             } while (true);
         }
@@ -119,8 +117,7 @@ public class EditAccount implements UserOption {
                 if (sc.hasNextLine()) {
                     String newPassword = sc.nextLine();
                     if (!newPassword.isEmpty()) {
-                        DataBaseService dtb = new DataBaseService();
-                        dtb.changePassword(newPassword, account.getAccountId());
+                        Helper.getDataBaseService().changePassword(newPassword, account.getAccountId());
                         break;
                     } else {
                         System.out.println("Password cannot be empty!\nPlease try again!\n");

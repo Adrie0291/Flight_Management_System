@@ -89,5 +89,15 @@ public class DataBaseService {
             return null;
         return flights;
     }
+
+    public boolean isTakenEmail(String email) {
+        Query query = entm.createQuery("from Account a where a.email=:email").setParameter("email", email);
+        if (query.getResultList().isEmpty()) {
+            return false;
+        } else {
+            System.out.println("Email is already in use!");
+            return true;
+        }
+    }
 }
 
