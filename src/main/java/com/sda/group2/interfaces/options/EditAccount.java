@@ -1,7 +1,7 @@
 package com.sda.group2.interfaces.options;
 
-import com.sda.group2.Controller;
 import com.sda.group2.DataBaseService;
+import com.sda.group2.MenuController;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.interfaces.UserOption;
 
@@ -23,14 +23,13 @@ public class EditAccount implements UserOption {
             list.add(new ChangePassword());
             list.add(new Back());
 
-            Controller.mainMenuCreate(account, list);
+            MenuController menuController = new MenuController();
+            menuController.buildInteractiveMenu(account, list);
         }
         while (!back);
     }
 
-
     private static class ChangeFirstName implements UserOption {
-
         @Override
         public void invoke(Account account) {
             Scanner sc = new Scanner(System.in);

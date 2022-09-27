@@ -4,7 +4,7 @@ public class FlightMappingException extends Exception {
 
     private String line;
 
-    public FlightMappingException(String message, String line){
+    public FlightMappingException(String message, String line) {
         super(message);
         this.line = line;
     }

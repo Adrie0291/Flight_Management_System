@@ -1,19 +1,18 @@
 package com.sda.group2.interfaces.options;
 
-import com.sda.group2.Controller;
+import com.sda.group2.DataBaseService;
 import com.sda.group2.hibernate.hql.users.Account;
 import com.sda.group2.interfaces.UserOption;
 
-public class Logout implements UserOption {
+public class ViewComplaints implements UserOption {
     @Override
     public void invoke(Account account) {
-        Controller.isLoggedIn = false;
+        DataBaseService dataBaseService = new DataBaseService();
+        dataBaseService.getListOfComplaint();
     }
 
     @Override
     public String getMethodName() {
-        return "Logout"; //tutaj jest nazwa która wyświetla się w menu
+        return "Get list of complaints";
     }
-
-    //Ogólnie cała przestrzeń do rozwijania danej opcji
 }

@@ -3,8 +3,6 @@ package com.sda.group2;
 import com.sda.group2.hibernate.HibernateUtil;
 
 import com.sda.group2.hibernate.hql.users.Account;
-import com.sda.group2.hibernate.hql.users.Admin;
-import com.sda.group2.hibernate.hql.users.User;
 import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
@@ -28,13 +26,13 @@ public class LoginRegisterService {
         return accounts.get(0);
     }
 
-    public void createNewAccount(Account account){
+    public void createNewAccount(Account account) {
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(account);
             entityManager.getTransaction().commit();
-        } catch (Exception e){
-            System.out.println("Given e-mail is not exist.");
+        } catch (Exception e) {
+            System.out.println("Account with given email address already exist.");
         }
     }
 }
