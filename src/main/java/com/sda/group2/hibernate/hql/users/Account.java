@@ -11,7 +11,7 @@ import java.util.List;
         discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id", nullable = false)
     private int accountId;
     @Column(unique = true, nullable = false)
