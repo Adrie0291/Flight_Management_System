@@ -1,4 +1,4 @@
-package com.sda.group2.optioninterfaces.options;
+package com.sda.group2.optioninterfaces.options.assistant;
 
 import com.sda.group2.DataBaseService;
 import com.sda.group2.Helper;
@@ -11,9 +11,6 @@ import java.util.List;
 public class FlightsFilteredPreview implements UserOption {
     @Override
     public void invoke(Account account) {
-        //String filename = scanner.nextLine();
-
-        // title
         System.out.println("Filter arrival flights by: ");
         String arrival = Helper.getNextLine();
 

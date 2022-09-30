@@ -1,4 +1,4 @@
-package com.sda.group2.optioninterfaces.options;
+package com.sda.group2.optioninterfaces.options.assistant;
 
 import com.sda.group2.DataBaseService;
 import com.sda.group2.hibernate.hql.Flight;

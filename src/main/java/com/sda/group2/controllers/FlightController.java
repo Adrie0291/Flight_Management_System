@@ -28,6 +28,6 @@ public class FlightController {
     }
 
     public String getFilename() {
-        return path+filename;
+        return path + filename;
     }
 }

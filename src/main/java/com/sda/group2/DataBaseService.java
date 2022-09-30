@@ -3,6 +3,7 @@ package com.sda.group2;
 import com.sda.group2.hibernate.HibernateUtil;
 import com.sda.group2.hibernate.hql.Flight;
 import com.sda.group2.hibernate.hql.Complaint;
+import com.sda.group2.hibernate.hql.Message;
 import com.sda.group2.hibernate.hql.users.Account;
 
 import javax.persistence.EntityManager;
@@ -59,17 +60,18 @@ public class DataBaseService {
         entm.getTransaction().commit();
     }
 
-    public void sendAComplaint(Complaint complaint){
+    public void sendAComplaint(Complaint complaint) {
         entm.getTransaction().begin();
         entm.persist(complaint);
         System.out.println("Thank you!");
         entm.getTransaction().commit();
     }
 
-    public void getListOfComplaint(){
+    public List<Complaint> getListOfComplaint() {
         entm.getTransaction().begin();
-        System.out.println(entm.createQuery("FROM Complaint", Complaint.class).getResultList());
+        List<Complaint> complaints = entm.createQuery("FROM Complaint", Complaint.class).getResultList();
         entm.getTransaction().commit();
+        return complaints;
     }
 
     public List<Flight> showFlights() {
@@ -90,6 +92,22 @@ public class DataBaseService {
         return flights;
     }
 
+    public void respondToComplaint(long flightNumber, String answer) {
+        entm.getTransaction().begin();
+        Complaint complaintFromDB = entm.find(Complaint.class, flightNumber);
+        complaintFromDB.setAnswer(answer);
+        System.out.println("Answer successfully send");
+        entm.merge(complaintFromDB);
+        entm.getTransaction().commit();
+    }
+
+    public void SendMessage(Account account, Message message) {
+        entm.getTransaction().begin();
+        entm.persist(message);
+        message.setAccount(account);
+        entm.getTransaction().commit();
+    }
+
     public boolean isTakenEmail(String email) {
         Query query = entm.createQuery("from Account a where a.email=:email").setParameter("email", email);
         if (query.getResultList().isEmpty()) {
@@ -99,5 +117,26 @@ public class DataBaseService {
             return true;
         }
     }
-}
 
+    public void receiveMessage(int number) {
+        List<Message> messages = entm.createQuery("from Message WHERE sender_id = :param", Message.class)
+                .setParameter("param", number)
+                .getResultList();
+        messages.forEach(System.out::println);
+    }
+
+    public void receiveMessage() {
+        List<Message> messages = entm.createQuery("from Message ", Message.class)
+                .getResultList();
+        messages.forEach(System.out::println);
+    }
+
+    public void answerToMessage(Account account, int messageId, String answer) {
+        entm.getTransaction().begin();
+        Message messageFromDB = entm.find(Message.class, messageId);
+        messageFromDB.setAnswer(answer);
+        messageFromDB.setReceiver_id(account.getAccountId());
+        entm.getTransaction().commit();
+
+    }
+}

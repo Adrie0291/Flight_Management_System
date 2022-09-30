@@ -1,11 +1,12 @@
 package com.sda.group2.hibernate.hql.users;
 
 import com.sda.group2.optioninterfaces.UserOption;
+import com.sda.group2.optioninterfaces.options.assistant.CustomerService;
+import com.sda.group2.optioninterfaces.options.assistant.MessageMethodAssistant;
 import com.sda.group2.optioninterfaces.options.common.EditAccount;
-import com.sda.group2.optioninterfaces.options.FlightsFilteredPreview;
-import com.sda.group2.optioninterfaces.options.FlightsPreview;
+import com.sda.group2.optioninterfaces.options.assistant.FlightsFilteredPreview;
+import com.sda.group2.optioninterfaces.options.assistant.FlightsPreview;
 import com.sda.group2.optioninterfaces.options.common.Logout;
-import com.sda.group2.optioninterfaces.options.assistant.ViewComplaints;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -27,9 +28,10 @@ public class Assistant extends Account {
     public List<UserOption> getOptions() {
         List<UserOption> list = new ArrayList<>();
         list.add(new EditAccount());
-        list.add(new ViewComplaints());
+        list.add(new CustomerService());
         list.add(new FlightsPreview());
         list.add(new FlightsFilteredPreview());
+        list.add(new MessageMethodAssistant());
         list.add(new Logout());
         return list;
     }

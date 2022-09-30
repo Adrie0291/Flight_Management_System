@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 
-@Table(name="airport")
+@Table(name = "airport")
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,7 +45,7 @@ public class Airport {
             System.out.println("You have got exception:");
             System.out.println(e.getMessage());
 
-        }catch (FlightMappingException e){
+        } catch (FlightMappingException e) {
             System.out.println("You have got exception:");
             System.out.println(e.getMessage());
             System.out.println(e.getLine());

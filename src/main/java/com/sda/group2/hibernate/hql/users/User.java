@@ -1,6 +1,7 @@
 package com.sda.group2.hibernate.hql.users;
 
 import com.sda.group2.optioninterfaces.UserOption;
+import com.sda.group2.optioninterfaces.options.user.MessageMethodUser;
 import com.sda.group2.optioninterfaces.options.common.EditAccount;
 import com.sda.group2.optioninterfaces.options.common.Logout;
 import com.sda.group2.optioninterfaces.options.user.FileAComplaint;
@@ -27,6 +28,7 @@ public class User extends Account {
         list.add(new EditAccount());
         list.add(new Wallet());
         list.add(new FileAComplaint());
+        list.add(new MessageMethodUser());
         list.add(new Logout());
         return list;
     }

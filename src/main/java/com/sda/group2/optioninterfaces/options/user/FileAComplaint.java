@@ -8,7 +8,7 @@ import com.sda.group2.optioninterfaces.UserOption;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Objects;
 
 public class FileAComplaint implements UserOption {
     private boolean back = false;
@@ -17,8 +17,9 @@ public class FileAComplaint implements UserOption {
     public void invoke(Account account) {
         do {
             List<UserOption> list = new ArrayList<>();
-            list.add(new fileAComplain());
-            list.add(new askForRefund());
+            list.add(new FileAComplain());
+            list.add(new AskForRefund());
+            list.add(new ViewYourIssues());
             list.add(new Back());
 
             Helper.getMenuController().buildInteractiveMenu(account, list);
@@ -27,13 +28,17 @@ public class FileAComplaint implements UserOption {
     }
 
 
-    private class fileAComplain implements UserOption {
+    private class FileAComplain implements UserOption {
 
         @Override
         public void invoke(Account account) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Please describe your issue, remember to provide your flight number!");
-            Complaint complaint = new Complaint(scanner.nextLine(), account.getEmail(), ComplaintType.COMPLAINT);
+            System.out.println("Please enter your flight number:");
+            String flightNumber = Helper.getNextLine();
+            System.out.println("Please enter your ticket number:");
+            String ticketNumber = Helper.getNextLine();
+            System.out.println("Please describe your issue:");
+            String message = Helper.getNextLine();
+            Complaint complaint = new Complaint(flightNumber, ticketNumber, message, account.getEmail(), ComplaintType.COMPLAINT);
             Helper.getDataBaseService().sendAComplaint(complaint);
         }
 
@@ -43,19 +48,42 @@ public class FileAComplaint implements UserOption {
         }
     }
 
-    private class askForRefund implements UserOption {
+    private class AskForRefund implements UserOption {
 
         @Override
         public void invoke(Account account) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Provide flight number, date and reason");
-            Complaint complaint = new Complaint(scanner.nextLine(), account.getEmail(), ComplaintType.REFUND);
+            Helper.getNextLine();
+            System.out.println("Please enter your flight number:");
+            String flightNumber = Helper.getNextLine();
+            System.out.println("Please enter your ticket number:");
+            String ticketNumber = Helper.getNextLine();
+            System.out.println("Please describe your issue:");
+            String message = Helper.getNextLine();
+            Complaint complaint = new Complaint(flightNumber, ticketNumber, message, account.getEmail(), ComplaintType.REFUND);
             Helper.getDataBaseService().sendAComplaint(complaint);
         }
 
         @Override
         public String getMethodName() {
             return "Ask for refund";
+        }
+    }
+
+    private class ViewYourIssues implements UserOption {
+
+        @Override
+        public void invoke(Account account) {
+            List<Complaint> complaints = Helper.getDataBaseService().getListOfComplaint();
+            for (Complaint c : complaints) {
+                if (Objects.equals(c.getSender(), account.getEmail())) {
+                    System.out.println(c);
+                }
+            }
+        }
+
+        @Override
+        public String getMethodName() {
+            return "View your Complaints";
         }
     }
 
